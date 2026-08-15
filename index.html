@@ -1078,4 +1078,549 @@ tbody tr:hover{background:rgba(238,217,183,0.22);}
       <div class="modal-body">
         <div class="field"><label data-i18n="eventNameField">Event Name</label><input required placeholder="e.g. Ravi & Anu Wedding" data-i18n-placeholder="eventNamePh"></div>
         <div class="field-row">
-          <div class="field"><label data-i18n="eventTypeField">Event Type</label><select><option data-i18n="optWedding">Wedding</option><option data-i18n="optBirthday">Birthday</option><option data-i18n="optAnniversary">Anniversary</
+          <div class="field"><label data-i18n="eventTypeField">Event Type</label><select><option data-i18n="optWedding">Wedding</option><option data-i18n="optBirthday">Birthday</option><option data-i18n="optAnniversary">Anniversary</option><option data-i18n="optCorporate">Corporate</option><option data-i18n="optFamily">Family</option><option data-i18n="optOther">Other</option></select></div>
+          <div class="field"><label data-i18n="expectedGuests">Expected Guests</label><input type="number" placeholder="e.g. 150" required></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label data-i18n="dateField">Date</label><input type="date" required></div>
+          <div class="field"><label data-i18n="timeField">Time</label><input type="time" required></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label data-i18n="locationField">Location</label><input placeholder="City / Venue" required></div>
+          <div class="field"><label data-i18n="budgetField">Budget</label><input placeholder="₹" required></div>
+        </div>
+        <div class="field"><label data-i18n="descriptionField">Description</label><input placeholder="Optional notes"></div>
+      </div>
+      <div class="modal-foot"><button type="button" class="btn ghost" data-close-modal data-i18n="cancel">Cancel</button><button type="submit" class="btn" data-i18n="createEvent">Create Event</button></div>
+    </form>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalAddGuest">
+  <div class="modal">
+    <div class="modal-head"><h3 data-i18n="addGuestModalTitle">Add Guest</h3><button class="modal-close" data-close-modal><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+    <form id="addGuestForm">
+      <div class="modal-body">
+        <div class="field-row">
+          <div class="field"><label data-i18n="guestNameField">Guest Name</label><input required placeholder="Full name"></div>
+          <div class="field"><label data-i18n="groupField">Group</label><select><option data-i18n="grpFamily">Family</option><option data-i18n="grpFriends">Friends</option><option data-i18n="grpColleagues">Colleagues</option><option data-i18n="grpRelatives">Relatives</option></select></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label data-i18n="phoneField">Phone</label><input required placeholder="+91"></div>
+          <div class="field"><label data-i18n="emailField">Email</label><input type="email" placeholder="name@email.com"></div>
+        </div>
+        <div class="field"><label data-i18n="eventField">Event</label><select><option>Arjun &amp; Priya Wedding</option><option>Ananya's Birthday</option><option>25th Anniversary</option><option>Annual Meet 2026</option><option>Family Get Together</option></select></div>
+      </div>
+      <div class="modal-foot"><button type="button" class="btn ghost" data-close-modal data-i18n="cancel">Cancel</button><button type="submit" class="btn" data-i18n="addGuest">Add Guest</button></div>
+    </form>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalAddVendor">
+  <div class="modal">
+    <div class="modal-head"><h3 data-i18n="addVendorModalTitle">Add Vendor</h3><button class="modal-close" data-close-modal><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+    <form id="addVendorForm">
+      <div class="modal-body">
+        <div class="field-row">
+          <div class="field"><label data-i18n="vendorNameField">Vendor Name</label><input required placeholder="Business name"></div>
+          <div class="field"><label data-i18n="categoryField">Category</label><select><option data-i18n="catCatering">Catering</option><option data-i18n="catVenueChip">Venue</option><option data-i18n="catPhotography">Photography</option><option data-i18n="catDecoration">Decoration</option><option data-i18n="catEntertainment">Entertainment</option><option data-i18n="catTransport">Transport</option><option data-i18n="catOthers">Others</option></select></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label data-i18n="phoneField">Phone</label><input required placeholder="+91"></div>
+          <div class="field"><label data-i18n="locationField">Location</label><input placeholder="City" required></div>
+        </div>
+      </div>
+      <div class="modal-foot"><button type="button" class="btn ghost" data-close-modal data-i18n="cancel">Cancel</button><button type="submit" class="btn" data-i18n="addVendor">Add Vendor</button></div>
+    </form>
+  </div>
+</div>
+
+<div class="toast-stack" id="toastStack"></div>
+
+<script>
+/* ============================================================
+   I18N — English / Tamil
+   ============================================================ */
+const translations = {
+  en: {
+    navDashboard:"Dashboard", navEvents:"Events", navGuests:"Guests", navLedger:"Ledger", navVendors:"Vendors", navSettings:"Settings",
+    themeLabel:"Light",
+    onRightPath:"You're on the right path", keepCrossing:"Keep crossing beautiful memories.",
+    welcomeBack:"Welcome back", goodEvening:"Good Evening, Arun", mayEvery:"May every celebration become a beautiful memory.",
+    searchDash:"Search events, guests...", searchGuests:"Search guests...",
+    notifications:"Notifications", rsvpPending:"12 Guest RSVPs pending", followUp:"Follow up with guests",
+    paymentDueTomorrow:"Payment due tomorrow", forCatering:"₹35,000 for catering",
+    vendorConfirmedHead:"Vendor confirmed", momentsStudioAccepted:"Moments Studio accepted",
+    eventManager:"Event Manager", accountSettings:"Account Settings", signOut:"Sign Out",
+    heroTitle:"Your celebrations,<br>beautifully organized.",
+    heroSubtitle:"Bring together your events, guests, vendors and finances — all in one peaceful place.",
+    createEvent:"Create Event", viewEvents:"View Events",
+    upcomingEvents:"Upcoming Events", totalGuests:"Total Guests", pendingPayments:"Pending Payments", vendorsLabel:"Vendors", tasksToday:"Tasks Today",
+    attendingLabel:"Attending", notAttendingLabel:"Not Attending", pendingLabel:"Pending",
+    upcomingCelebrations:"Upcoming Celebrations", viewAll:"View All",
+    needsAttention:"Needs Your Attention",
+    paymentDue35:"₹35,000 payment due tomorrow", reviewLedger:"Review Ledger",
+    photographyContract:"Photography contract awaiting confirmation", contactVendor:"Contact Vendor",
+    seatingReview:"Seating arrangement needs review", openEvent:"Open Event",
+    journey:"Journey", pctReady:"78% Ready",
+    journeyGuests:"Guests", journeyVendors:"Vendors", journeyPayments:"Payments", journeyTasks:"Tasks", journeyCelebration:"Celebration",
+    ledgerCardTitle:"Ledger", viewLedger:"View Ledger",
+    paidLegend:"Paid", remainingLegend:"Remaining", budgetLegend:"Budget",
+    recentMoments:"Recent Moments",
+    momentJoined:"24 guests joined the celebration", minsAgo10:"10 mins ago",
+    momentCatering:"Catering confirmed", hourAgo1:"1 hour ago",
+    momentPayment:"₹45,000 payment recorded", hoursAgo3:"3 hours ago",
+    momentVendor:"Photography vendor confirmed", hoursAgo5:"5 hours ago",
+    momentAttending:"3 guests marked attending", yesterday:"Yesterday",
+    weddingCelebration:"Wedding Celebration", birthdayCelebration:"Birthday Celebration",
+    anniversaryCelebration:"Anniversary Celebration", corporateEvent:"Corporate Event", familyCelebration:"Family Celebration",
+    journeyNote:"You're on the right path! Keep going, beautiful memories await.",
+    statusConfirmed:"Confirmed", statusPlanning:"Planning", statusSaveDate:"Save the Date",
+    allEvents:"All Events", calendarView:"Calendar View",
+    filterAll:"All", filterUpcoming:"Upcoming", filterPlanning:"Planning", filterOngoing:"Ongoing", filterCompleted:"Completed", filterCancelled:"Cancelled",
+    thEvent:"Event", thDate:"Date", thLocation:"Location", thGuests:"Guests", thStatus:"Status", thActions:"Actions",
+    thGuest:"Guest", thContact:"Contact", thRsvp:"RSVP Status", thGroup:"Group",
+    showing:"Showing", of:"of", eventsWord:"events", guestsWord:"guests", vendorsWord:"vendors",
+    guestsTitle:"Guests", importGuests:"Import Guests", addGuest:"Add Guest",
+    allGuests:"All Guests",
+    ledgerPageTitle:"Ledger", totalBudget:"Total Budget", totalPaid:"Total Paid", totalRemaining:"Total Remaining", paymentsLabel:"Payments",
+    tabOverview:"Overview", tabAllTransactions:"All Transactions", tabIncome:"Income", tabExpenses:"Expenses", tabReports:"Reports",
+    budgetOverview:"Budget Overview", categoryBreakdown:"Category Breakdown", recentTransactions:"Recent Transactions", viewAllTransactions:"View All Transactions",
+    catVenue:"Venue", catCatering:"Catering", catDecoration:"Decoration", catPhotography:"Photography", catEntertainment:"Entertainment", catTransport:"Transport",
+    catVenueChip:"Venue", catOthers:"Others",
+    vendorsPageTitle:"Vendors", addVendor:"Add Vendor",
+    statusBooked:"Booked", statusContacted:"Contacted", statusQuotation:"Quotation", statusShortlisted:"Shortlisted",
+    settingsPageTitle:"Settings",
+    tabProfile:"Profile", tabPreferences:"Preferences", tabNotifications:"Notifications", tabSecurity:"Security", tabEventPrefs:"Event Preferences", tabPaymentSettings:"Payment Settings",
+    changePhoto:"Change Photo", fullName:"Full Name", emailField:"Email", phoneField:"Phone", roleField:"Role", saveChanges:"Save Changes",
+    dateFormat:"Date Format", timeFormat:"Time Format", currencyField:"Currency", languageField:"Language", themeField:"Theme", savePreferences:"Save Preferences",
+    notifIntro:"Choose how I Moi Book keeps you informed.", emailNotif:"Email notifications", smsReminders:"SMS reminders",
+    passwordField:"Password", twoFactor:"Two-factor authentication",
+    defaultRsvp:"Default RSVP window", defaultGroup:"Default guest group",
+    preferredPayment:"Preferred payment method", billingEmail:"Billing email",
+    quickSettings:"Quick Settings",
+    backupExport:"Backup & Export", exportYourData:"Export your data",
+    templates:"Templates", manageTemplates:"Manage templates",
+    inviteTeam:"Invite Team", addTeamMembers:"Add team members",
+    privacy:"Privacy", managePrivacy:"Manage privacy",
+    createEventModalTitle:"Create Event", addGuestModalTitle:"Add Guest", addVendorModalTitle:"Add Vendor",
+    eventNameField:"Event Name", eventNamePh:"e.g. Ravi & Anu Wedding", eventTypeField:"Event Type",
+    optWedding:"Wedding", optBirthday:"Birthday", optAnniversary:"Anniversary", optCorporate:"Corporate", optFamily:"Family", optOther:"Other",
+    expectedGuests:"Expected Guests", dateField:"Date", timeField:"Time", locationField:"Location", budgetField:"Budget", descriptionField:"Description",
+    cancel:"Cancel",
+    guestNameField:"Guest Name", groupField:"Group", grpFamily:"Family", grpFriends:"Friends", grpColleagues:"Colleagues", grpRelatives:"Relatives",
+    eventField:"Event",
+    vendorNameField:"Vendor Name", categoryField:"Category",
+    toastCalendar:"Calendar view is coming soon.", toastEventCreated:"Event created successfully.",
+    toastGuestAdded:"Guest added successfully.", toastVendorAdded:"Vendor added successfully.",
+    toastProfileSaved:"Profile changes saved.", toastPrefsSaved:"Preferences saved.",
+    listView:"List View",
+    months:["January","February","March","April","May","June","July","August","September","October","November","December"],
+    weekdaysShort:["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
+  },
+  ta: {
+    navDashboard:"டாஷ்போர்டு", navEvents:"நிகழ்வுகள்", navGuests:"விருந்தினர்கள்", navLedger:"கணக்கேடு", navVendors:"விற்பனையாளர்கள்", navSettings:"அமைப்புகள்",
+    themeLabel:"வெளிச்சம்",
+    onRightPath:"நீங்கள் சரியான பாதையில் உள்ளீர்கள்", keepCrossing:"அழகான நினைவுகளைத் தொடர்ந்து சேர்க்கவும்.",
+    welcomeBack:"மீண்டும் வருக", goodEvening:"மாலை வணக்கம், அருண்", mayEvery:"ஒவ்வொரு கொண்டாட்டமும் அழகான நினைவாக மாறட்டும்.",
+    searchDash:"நிகழ்வுகள், விருந்தினர்களைத் தேடுங்கள்...", searchGuests:"விருந்தினர்களைத் தேடுங்கள்...",
+    notifications:"அறிவிப்புகள்", rsvpPending:"12 விருந்தினர் பதில் நிலுவையில்", followUp:"விருந்தினர்களை தொடர்பு கொள்ளவும்",
+    paymentDueTomorrow:"நாளை கட்டணம் செலுத்த வேண்டும்", forCatering:"₹35,000 உணவு சேவைக்கு",
+    vendorConfirmedHead:"விற்பனையாளர் உறுதி செய்யப்பட்டது", momentsStudioAccepted:"Moments Studio ஏற்றுக்கொண்டது",
+    eventManager:"நிகழ்வு மேலாளர்", accountSettings:"கணக்கு அமைப்புகள்", signOut:"வெளியேறு",
+    heroTitle:"உங்கள் கொண்டாட்டங்கள்,<br>அழகாக ஒழுங்கமைக்கப்பட்டவை.",
+    heroSubtitle:"உங்கள் நிகழ்வுகள், விருந்தினர்கள், விற்பனையாளர்கள் மற்றும் நிதி — அனைத்தையும் ஒரே அமைதியான இடத்தில் கொண்டு வாருங்கள்.",
+    createEvent:"நிகழ்வை உருவாக்கு", viewEvents:"நிகழ்வுகளைக் காண்க",
+    upcomingEvents:"வரவிருக்கும் நிகழ்வுகள்", totalGuests:"மொத்த விருந்தினர்கள்", pendingPayments:"நிலுவைத் தொகை", vendorsLabel:"விற்பனையாளர்கள்", tasksToday:"இன்றைய பணிகள்",
+    attendingLabel:"கலந்துகொள்கிறார்", notAttendingLabel:"கலந்துகொள்ளவில்லை", pendingLabel:"நிலுவையில்",
+    upcomingCelebrations:"வரவிருக்கும் கொண்டாட்டங்கள்", viewAll:"அனைத்தையும் காண்க",
+    needsAttention:"கவனம் தேவை",
+    paymentDue35:"₹35,000 நாளை செலுத்த வேண்டும்", reviewLedger:"கணக்கேட்டை பார்வையிடவும்",
+    photographyContract:"புகைப்படக் ஒப்பந்தம் உறுதிக்காக காத்திருக்கிறது", contactVendor:"விற்பனையாளரைத் தொடர்பு கொள்ளவும்",
+    seatingReview:"இருக்கை ஏற்பாடு மறுபரிசீலனை தேவை", openEvent:"நிகழ்வைத் திற",
+    journey:"பயணம்", pctReady:"78% தயார்",
+    journeyGuests:"விருந்தினர்கள்", journeyVendors:"விற்பனையாளர்கள்", journeyPayments:"கட்டணங்கள்", journeyTasks:"பணிகள்", journeyCelebration:"கொண்டாட்டம்",
+    ledgerCardTitle:"கணக்கேடு", viewLedger:"கணக்கேட்டைக் காண்க",
+    paidLegend:"செலுத்தியது", remainingLegend:"மீதம்", budgetLegend:"பட்ஜெட்",
+    recentMoments:"சமீபத்திய தருணங்கள்",
+    momentJoined:"24 விருந்தினர்கள் கொண்டாட்டத்தில் இணைந்தனர்", minsAgo10:"10 நிமிடங்களுக்கு முன்",
+    momentCatering:"உணவு சேவை உறுதி செய்யப்பட்டது", hourAgo1:"1 மணி நேரத்திற்கு முன்",
+    momentPayment:"₹45,000 கட்டணம் பதிவு செய்யப்பட்டது", hoursAgo3:"3 மணி நேரத்திற்கு முன்",
+    momentVendor:"புகைப்படக் கலைஞர் உறுதி செய்யப்பட்டார்", hoursAgo5:"5 மணி நேரத்திற்கு முன்",
+    momentAttending:"3 விருந்தினர்கள் கலந்துகொள்வதாகக் குறிக்கப்பட்டனர்", yesterday:"நேற்று",
+    weddingCelebration:"திருமண கொண்டாட்டம்", birthdayCelebration:"பிறந்தநாள் கொண்டாட்டம்",
+    anniversaryCelebration:"ஆண்டுவிழா கொண்டாட்டம்", corporateEvent:"நிறுவன நிகழ்வு", familyCelebration:"குடும்ப கொண்டாட்டம்",
+    journeyNote:"நீங்கள் சரியான பாதையில் உள்ளீர்கள்! தொடருங்கள், அழகான நினைவுகள் காத்திருக்கின்றன.",
+    statusConfirmed:"உறுதி செய்யப்பட்டது", statusPlanning:"திட்டமிடல்", statusSaveDate:"தேதியைச் சேமிக்கவும்",
+    allEvents:"அனைத்து நிகழ்வுகள்", calendarView:"நாட்காட்டி காட்சி",
+    filterAll:"அனைத்தும்", filterUpcoming:"வரவிருக்கும்", filterPlanning:"திட்டமிடல்", filterOngoing:"நடைபெறுகிறது", filterCompleted:"முடிந்தது", filterCancelled:"ரத்து செய்யப்பட்டது",
+    thEvent:"நிகழ்வு", thDate:"தேதி", thLocation:"இடம்", thGuests:"விருந்தினர்கள்", thStatus:"நிலை", thActions:"செயல்கள்",
+    thGuest:"விருந்தினர்", thContact:"தொடர்பு", thRsvp:"RSVP நிலை", thGroup:"குழு",
+    showing:"காண்பிக்கிறது", of:"இல்", eventsWord:"நிகழ்வுகள்", guestsWord:"விருந்தினர்கள்", vendorsWord:"விற்பனையாளர்கள்",
+    guestsTitle:"விருந்தினர்கள்", importGuests:"விருந்தினர்களை இறக்குமதி செய்", addGuest:"விருந்தினரைச் சேர்",
+    allGuests:"அனைத்து விருந்தினர்களும்",
+    ledgerPageTitle:"கணக்கேடு", totalBudget:"மொத்த பட்ஜெட்", totalPaid:"மொத்தம் செலுத்தியது", totalRemaining:"மொத்த மீதம்", paymentsLabel:"கட்டணங்கள்",
+    tabOverview:"கண்ணோட்டம்", tabAllTransactions:"அனைத்து பரிவர்த்தனைகள்", tabIncome:"வருமானம்", tabExpenses:"செலவுகள்", tabReports:"அறிக்கைகள்",
+    budgetOverview:"பட்ஜெட் கண்ணோட்டம்", categoryBreakdown:"வகைப்பாடு", recentTransactions:"சமீபத்திய பரிவர்த்தனைகள்", viewAllTransactions:"அனைத்து பரிவர்த்தனைகளையும் காண்க",
+    catVenue:"இடம்", catCatering:"உணவு சேவை", catDecoration:"அலங்காரம்", catPhotography:"புகைப்படம்", catEntertainment:"பொழுதுபோக்கு", catTransport:"போக்குவரத்து",
+    catVenueChip:"இடம்", catOthers:"மற்றவை",
+    vendorsPageTitle:"விற்பனையாளர்கள்", addVendor:"விற்பனையாளரைச் சேர்",
+    statusBooked:"முன்பதிவு செய்யப்பட்டது", statusContacted:"தொடர்பு கொள்ளப்பட்டது", statusQuotation:"மேற்கோள்", statusShortlisted:"தேர்ந்தெடுக்கப்பட்டது",
+    settingsPageTitle:"அமைப்புகள்",
+    tabProfile:"சுயவிவரம்", tabPreferences:"விருப்பங்கள்", tabNotifications:"அறிவிப்புகள்", tabSecurity:"பாதுகாப்பு", tabEventPrefs:"நிகழ்வு விருப்பங்கள்", tabPaymentSettings:"கட்டண அமைப்புகள்",
+    changePhoto:"புகைப்படத்தை மாற்று", fullName:"முழுப் பெயர்", emailField:"மின்னஞ்சல்", phoneField:"தொலைபேசி", roleField:"பணி", saveChanges:"மாற்றங்களைச் சேமி",
+    dateFormat:"தேதி வடிவம்", timeFormat:"நேர வடிவம்", currencyField:"நாணயம்", languageField:"மொழி", themeField:"தீம்", savePreferences:"விருப்பங்களைச் சேமி",
+    notifIntro:"I Moi Book உங்களை எவ்வாறு தெரிவிக்க வேண்டும் என்பதைத் தேர்வு செய்யவும்.", emailNotif:"மின்னஞ்சல் அறிவிப்புகள்", smsReminders:"SMS நினைவூட்டல்கள்",
+    passwordField:"கடவுச்சொல்", twoFactor:"இரு-படி சரிபார்ப்பு",
+    defaultRsvp:"இயல்பான RSVP காலம்", defaultGroup:"இயல்பான விருந்தினர் குழு",
+    preferredPayment:"விருப்பமான கட்டண முறை", billingEmail:"பில்லிங் மின்னஞ்சல்",
+    quickSettings:"விரைவு அமைப்புகள்",
+    backupExport:"காப்பு & ஏற்றுமதி", exportYourData:"உங்கள் தரவை ஏற்றுமதி செய்யவும்",
+    templates:"டெம்ப்ளேட்டுகள்", manageTemplates:"டெம்ப்ளேட்டுகளை நிர்வகி",
+    inviteTeam:"குழுவை அழை", addTeamMembers:"குழு உறுப்பினர்களைச் சேர்",
+    privacy:"தனியுரிமை", managePrivacy:"தனியுரிமையை நிர்வகி",
+    createEventModalTitle:"நிகழ்வை உருவாக்கு", addGuestModalTitle:"விருந்தினரைச் சேர்", addVendorModalTitle:"விற்பனையாளரைச் சேர்",
+    eventNameField:"நிகழ்வின் பெயர்", eventNamePh:"எ.கா. ரவி & அனு திருமணம்", eventTypeField:"நிகழ்வு வகை",
+    optWedding:"திருமணம்", optBirthday:"பிறந்தநாள்", optAnniversary:"ஆண்டுவிழா", optCorporate:"நிறுவனம்", optFamily:"குடும்பம்", optOther:"மற்றவை",
+    expectedGuests:"எதிர்பார்க்கப்படும் விருந்தினர்கள்", dateField:"தேதி", timeField:"நேரம்", locationField:"இடம்", budgetField:"பட்ஜெட்", descriptionField:"விளக்கம்",
+    cancel:"ரத்து செய்",
+    guestNameField:"விருந்தினர் பெயர்", groupField:"குழு", grpFamily:"குடும்பம்", grpFriends:"நண்பர்கள்", grpColleagues:"சக ஊழியர்கள்", grpRelatives:"உறவினர்கள்",
+    eventField:"நிகழ்வு",
+    vendorNameField:"விற்பனையாளர் பெயர்", categoryField:"வகை",
+    toastCalendar:"நாட்காட்டி காட்சி விரைவில் வருகிறது.", toastEventCreated:"நிகழ்வு வெற்றிகரமாக உருவாக்கப்பட்டது.",
+    toastGuestAdded:"விருந்தினர் வெற்றிகரமாக சேர்க்கப்பட்டார்.", toastVendorAdded:"விற்பனையாளர் வெற்றிகரமாக சேர்க்கப்பட்டார்.",
+    toastProfileSaved:"சுயவிவர மாற்றங்கள் சேமிக்கப்பட்டன.", toastPrefsSaved:"விருப்பங்கள் சேமிக்கப்பட்டன.",
+    listView:"பட்டியல் காட்சி",
+    months:["ஜனவரி","பிப்ரவரி","மார்ச்","ஏப்ரல்","மே","ஜூன்","ஜூலை","ஆகஸ்ட்","செப்டம்பர்","அக்டோபர்","நவம்பர்","டிசம்பர்"],
+    weekdaysShort:["ஞா","தி","செ","பு","வி","வெ","ச"],
+  }
+};
+
+let currentLang = 'en';
+function t(key){
+  const dict = translations[currentLang] || translations.en;
+  return dict[key] || translations.en[key] || key;
+}
+
+function applyLanguage(lang){
+  currentLang = lang;
+  document.documentElement.setAttribute('lang', lang);
+  document.documentElement.setAttribute('data-lang', lang);
+  document.getElementById('langEn').classList.toggle('active', lang==='en');
+  document.getElementById('langTa').classList.toggle('active', lang==='ta');
+
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.getAttribute('data-i18n');
+    const val = t(key);
+    if(val.includes('<br>')) el.innerHTML = val; else el.textContent = val;
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+    el.setAttribute('placeholder', t(el.getAttribute('data-i18n-placeholder')));
+  });
+
+  // refresh theme label
+  const isDark = document.documentElement.getAttribute('data-theme')==='dark';
+  const themeLabelEl = document.querySelector('#themeToggle span');
+  if(themeLabelEl) themeLabelEl.textContent = isDark ? (lang==='ta' ? 'இருள்' : 'Dark') : (lang==='ta' ? 'வெளிச்சம்' : 'Light');
+
+  // refresh dynamic counters if those functions already exist
+  if(typeof applyGuestFilters === 'function') applyGuestFilters();
+  const evTab = document.querySelector('#eventFilterTabs .tab-item.active');
+  if(evTab) evTab.click();
+  const vTab = document.querySelector('#vendorChips .chip.active');
+  if(vTab) vTab.click();
+  if(typeof calendarShown !== 'undefined' && calendarShown) renderCalendar();
+}
+
+document.getElementById('langEn').addEventListener('click', ()=> applyLanguage('en'));
+document.getElementById('langTa').addEventListener('click', ()=> applyLanguage('ta'));
+
+/* ---------- Theme toggle ---------- */
+function applyThemeLabel(){
+  const isDark = document.documentElement.getAttribute('data-theme')==='dark';
+  document.getElementById('themeIconSun').style.display = isDark ? 'none' : 'block';
+  document.getElementById('themeIconMoon').style.display = isDark ? 'block' : 'none';
+  const themeLabelEl = document.querySelector('#themeToggle span');
+  if(themeLabelEl) themeLabelEl.textContent = isDark ? (currentLang==='ta' ? 'இருள்' : 'Dark') : (currentLang==='ta' ? 'வெளிச்சம்' : 'Light');
+}
+document.getElementById('themeToggle').addEventListener('click', ()=>{
+  const isDark = document.documentElement.getAttribute('data-theme')==='dark';
+  document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  applyThemeLabel();
+});
+applyThemeLabel();
+
+/* ---------- Navigation ---------- */
+const navItems = document.querySelectorAll('.nav-item');
+function goToView(view){
+  navItems.forEach(i=>i.classList.toggle('active', i.dataset.view===view));
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  const target = document.getElementById('view-'+view);
+  if(target) target.classList.add('active');
+  closeSidebarMobile();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+navItems.forEach(item=> item.addEventListener('click', ()=> goToView(item.dataset.view)) );
+document.querySelectorAll('[data-view-link]').forEach(el=>{
+  el.addEventListener('click', ()=> goToView(el.dataset.viewLink) );
+});
+
+/* ---------- Mobile sidebar ---------- */
+const sidebar = document.getElementById('sidebar');
+const scrim = document.getElementById('sidebarScrim');
+function openSidebarMobile(){ sidebar.classList.add('open'); scrim.classList.add('open'); }
+function closeSidebarMobile(){ sidebar.classList.remove('open'); scrim.classList.remove('open'); }
+['mobileToggle','mobileToggle2','mobileToggle3','mobileToggle4','mobileToggle5','mobileToggle6'].forEach(id=>{
+  const btn = document.getElementById(id);
+  if(btn) btn.addEventListener('click', openSidebarMobile);
+});
+scrim.addEventListener('click', closeSidebarMobile);
+
+/* ---------- Dropdowns ---------- */
+const dropdownScrim = document.getElementById('dropdownScrim');
+function toggleDropdown(btnId, ddId){
+  const btn = document.getElementById(btnId);
+  const dd = document.getElementById(ddId);
+  btn.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    const willOpen = !dd.classList.contains('open');
+    document.querySelectorAll('.dropdown.open').forEach(d=>d.classList.remove('open'));
+    if(willOpen) dd.classList.add('open');
+    dropdownScrim.classList.toggle('open', willOpen);
+  });
+}
+toggleDropdown('bellBtn','bellDropdown');
+toggleDropdown('avatarBtn','avatarDropdown');
+dropdownScrim.addEventListener('click', ()=>{
+  document.querySelectorAll('.dropdown.open').forEach(d=>d.classList.remove('open'));
+  dropdownScrim.classList.remove('open');
+});
+document.addEventListener('click', ()=>{
+  document.querySelectorAll('.dropdown.open').forEach(d=>d.classList.remove('open'));
+  dropdownScrim.classList.remove('open');
+});
+
+/* ---------- Generic tab toggling (visual only groups) ---------- */
+document.querySelectorAll('.tabs-row').forEach(group=>{
+  if(group.id==='eventFilterTabs' || group.id==='guestFilterTabs') return;
+  group.querySelectorAll('.tab-item').forEach(tab=>{
+    tab.addEventListener('click', ()=>{
+      group.querySelectorAll('.tab-item').forEach(t=>t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+});
+
+/* ---------- Events filter ---------- */
+const eventFilterTabs = document.getElementById('eventFilterTabs');
+const eventsRows = ()=> document.querySelectorAll('#eventsTableBody tr');
+eventFilterTabs.querySelectorAll('.tab-item').forEach(tab=>{
+  tab.addEventListener('click', ()=>{
+    eventFilterTabs.querySelectorAll('.tab-item').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    const status = tab.dataset.status;
+    let count = 0;
+    eventsRows().forEach(row=>{
+      const show = status==='all' || row.dataset.status===status;
+      row.style.display = show ? '' : 'none';
+      if(show) count++;
+    });
+    document.getElementById('eventsCount').textContent = `${t('showing')} ${count} ${t('of')} ${eventsRows().length} ${t('eventsWord')}`;
+  });
+});
+
+/* ---------- Guests filter + search ---------- */
+const guestFilterTabs = document.getElementById('guestFilterTabs');
+const guestRows = ()=> document.querySelectorAll('#guestsTableBody tr');
+function applyGuestFilters(){
+  const activeTab = guestFilterTabs.querySelector('.tab-item.active');
+  const status = activeTab ? activeTab.dataset.status : 'all';
+  const q = document.getElementById('guestSearch').value.trim().toLowerCase();
+  let count=0;
+  guestRows().forEach(row=>{
+    const matchStatus = status==='all' || row.dataset.status===status;
+    const matchSearch = !q || row.dataset.name.includes(q);
+    const show = matchStatus && matchSearch;
+    row.style.display = show ? '' : 'none';
+    if(show) count++;
+  });
+  document.getElementById('guestsCount').textContent = `${t('showing')} ${count} ${t('of')} 428 ${t('guestsWord')}`;
+}
+guestFilterTabs.querySelectorAll('.tab-item').forEach(tab=>{
+  tab.addEventListener('click', ()=>{
+    guestFilterTabs.querySelectorAll('.tab-item').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    applyGuestFilters();
+  });
+});
+document.getElementById('guestSearch').addEventListener('input', applyGuestFilters);
+
+/* ---------- Vendors filter ---------- */
+const vendorChips = document.getElementById('vendorChips');
+const vendorCards = ()=> document.querySelectorAll('#vendorGrid .vendor-card');
+vendorChips.querySelectorAll('.chip').forEach(chip=>{
+  chip.addEventListener('click', ()=>{
+    vendorChips.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+    chip.classList.add('active');
+    const cat = chip.dataset.cat;
+    let count=0;
+    vendorCards().forEach(card=>{
+      const show = cat==='all' || card.dataset.cat===cat;
+      card.style.display = show ? '' : 'none';
+      if(show) count++;
+    });
+    document.getElementById('vendorsCount').textContent = `${t('showing')} ${count} ${t('of')} 18 ${t('vendorsWord')}`;
+  });
+});
+
+/* ---------- Settings tabs ---------- */
+const settingsTabs = document.getElementById('settingsTabs');
+settingsTabs.querySelectorAll('span').forEach(tab=>{
+  tab.addEventListener('click', ()=>{
+    settingsTabs.querySelectorAll('span').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    ['profile','preferences','notifications','security','event','payment'].forEach(key=>{
+      document.getElementById('settingsPanel-'+key).style.display = (key===tab.dataset.tab) ? 'block' : 'none';
+    });
+  });
+});
+document.querySelectorAll('.theme-dot').forEach(dot=>{
+  dot.addEventListener('click', ()=>{
+    document.querySelectorAll('.theme-dot').forEach(d=>d.classList.remove('active'));
+    dot.classList.add('active');
+  });
+});
+
+/* ---------- Modals ---------- */
+function openModal(id){ document.getElementById(id).classList.add('open'); }
+function closeModal(el){ el.closest('.modal-overlay').classList.remove('open'); }
+document.getElementById('heroCreateEvent').addEventListener('click', ()=> openModal('modalCreateEvent'));
+document.getElementById('eventsCreateBtn').addEventListener('click', ()=> openModal('modalCreateEvent'));
+document.getElementById('guestsAddBtn').addEventListener('click', ()=> openModal('modalAddGuest'));
+document.getElementById('vendorsAddBtn').addEventListener('click', ()=> openModal('modalAddVendor'));
+document.getElementById('calViewBtn').addEventListener('click', toggleCalendarView);
+
+/* ---------- Calendar View ---------- */
+const eventsData = [
+  { date:'2026-08-18', title:"Arjun & Priya Wedding", status:'confirmed' },
+  { date:'2026-09-05', title:"Ananya's Birthday", status:'planning' },
+  { date:'2026-09-22', title:"25th Anniversary", status:'savedate' },
+  { date:'2026-10-10', title:"Annual Meet 2026", status:'confirmed' },
+  { date:'2026-10-28', title:"Family Get Together", status:'planning' },
+];
+let calYear = 2026, calMonth = 7; // August 2026 (0-indexed)
+let calendarShown = false;
+
+function toggleCalendarView(){
+  calendarShown = !calendarShown;
+  document.getElementById('eventsListPanel').style.display = calendarShown ? 'none' : 'block';
+  document.getElementById('eventsCalendarPanel').style.display = calendarShown ? 'block' : 'none';
+  document.getElementById('calViewBtnLabel').setAttribute('data-i18n', calendarShown ? 'listView' : 'calendarView');
+  document.getElementById('calViewBtnLabel').textContent = calendarShown ? t('listView') : t('calendarView');
+  if(calendarShown) renderCalendar();
+}
+
+function renderCalendar(){
+  const weekdaysEl = document.getElementById('calWeekdays');
+  weekdaysEl.innerHTML = t('weekdaysShort').map(d=>`<div>${d}</div>`).join('');
+
+  document.getElementById('calMonthLabel').textContent = `${t('months')[calMonth]} ${calYear}`;
+
+  const grid = document.getElementById('calGrid');
+  grid.innerHTML = '';
+  const firstDay = new Date(calYear, calMonth, 1);
+  const startOffset = firstDay.getDay();
+  const daysInMonth = new Date(calYear, calMonth+1, 0).getDate();
+  const daysInPrevMonth = new Date(calYear, calMonth, 0).getDate();
+  const todayStr = new Date().toISOString().slice(0,10);
+
+  const cells = [];
+  for(let i=startOffset-1;i>=0;i--){
+    cells.push({day: daysInPrevMonth-i, outside:true});
+  }
+  for(let d=1; d<=daysInMonth; d++){
+    cells.push({day:d, outside:false});
+  }
+  while(cells.length % 7 !== 0){
+    cells.push({day: cells.length - (startOffset+daysInMonth) + 1, outside:true});
+  }
+
+  cells.forEach(cell=>{
+    const div = document.createElement('div');
+    div.className = 'cal-cell' + (cell.outside ? ' outside' : '');
+    const mm = String(calMonth+1).padStart(2,'0');
+    const dd = String(cell.day).padStart(2,'0');
+    const dateStr = `${calYear}-${mm}-${dd}`;
+    if(!cell.outside && dateStr === todayStr) div.classList.add('today');
+    div.innerHTML = `<div class="cal-daynum">${cell.day}</div>`;
+    if(!cell.outside){
+      eventsData.filter(ev=>ev.date===dateStr).forEach(ev=>{
+        const chip = document.createElement('div');
+        chip.className = 'cal-event ' + ev.status;
+        chip.textContent = ev.title;
+        chip.title = ev.title;
+        div.appendChild(chip);
+      });
+    }
+    grid.appendChild(div);
+  });
+}
+document.getElementById('calPrev').addEventListener('click', ()=>{
+  calMonth--; if(calMonth<0){ calMonth=11; calYear--; }
+  renderCalendar();
+});
+document.getElementById('calNext').addEventListener('click', ()=>{
+  calMonth++; if(calMonth>11){ calMonth=0; calYear++; }
+  renderCalendar();
+});
+document.querySelectorAll('[data-close-modal]').forEach(el=>{
+  el.addEventListener('click', ()=> closeModal(el));
+});
+document.querySelectorAll('.modal-overlay').forEach(overlay=>{
+  overlay.addEventListener('click', (e)=>{ if(e.target===overlay) overlay.classList.remove('open'); });
+});
+document.addEventListener('keydown', (e)=>{
+  if(e.key==='Escape') document.querySelectorAll('.modal-overlay.open').forEach(o=>o.classList.remove('open'));
+});
+
+/* ---------- Toasts ---------- */
+function showToast(msg){
+  const stack = document.getElementById('toastStack');
+  const toast = document.createElement('div');
+  toast.className='toast';
+  toast.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>${msg}</span>`;
+  stack.appendChild(toast);
+  setTimeout(()=>{ toast.style.opacity='0'; toast.style.transform='translateY(8px)'; toast.style.transition='all .3s ease'; setTimeout(()=>toast.remove(),300); }, 3200);
+}
+
+/* ---------- Form submissions ---------- */
+document.getElementById('createEventForm').addEventListener('submit', (e)=>{
+  e.preventDefault();
+  document.getElementById('modalCreateEvent').classList.remove('open');
+  e.target.reset();
+  showToast(t('toastEventCreated'));
+});
+document.getElementById('addGuestForm').addEventListener('submit', (e)=>{
+  e.preventDefault();
+  document.getElementById('modalAddGuest').classList.remove('open');
+  e.target.reset();
+  showToast(t('toastGuestAdded'));
+});
+document.getElementById('addVendorForm').addEventListener('submit', (e)=>{
+  e.preventDefault();
+  document.getElementById('modalAddVendor').classList.remove('open');
+  e.target.reset();
+  showToast(t('toastVendorAdded'));
+});
+document.getElementById('saveProfileBtn').addEventListener('click', ()=> showToast(t('toastProfileSaved')));
+document.getElementById('savePrefsBtn').addEventListener('click', ()=> showToast(t('toastPrefsSaved')));
+
+/* ---------- Dashboard search redirects to Events/Guests ---------- */
+document.getElementById('dashSearch').addEventListener('keydown', (e)=>{
+  if(e.key==='Enter' && e.target.value.trim()){
+    goToView('events');
+  }
+});
+</script>
+</body>
+</html>
