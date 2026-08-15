@@ -215,7 +215,19 @@ nav.nav-list{display:flex;flex-direction:column;gap:4px;}
   box-shadow:0 0 8px rgba(201,145,50,0.7);
 }
 
-.sidebar-deco{display:none;}
+.sidebar-deco{
+  height:120px;flex-shrink:0;position:relative;pointer-events:none;margin-top:-6px;
+}
+.sidebar-deco svg{position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);width:132px;height:120px;opacity:0.92;}
+
+.sidebar-footer-caption{
+  position:relative;text-align:center;padding-top:14px;margin-top:2px;
+  font-size:10.5px;color:var(--muted);font-style:italic;letter-spacing:0.2px;
+}
+.sidebar-footer-caption::before{
+  content:"";position:absolute;top:0;left:10%;right:10%;height:1px;
+  background:linear-gradient(90deg, transparent, rgba(201,145,50,0.35), transparent);
+}
 
 .mobile-toggle{display:none;}
 .sidebar-scrim{
@@ -346,11 +358,12 @@ html[data-theme="dark"] .dropdown-scrim{background:rgba(0,0,0,0.28);}
 .hero .btn.outline{background:rgba(255,255,255,.6);color:var(--brown);border:1px solid rgba(201,145,50,.3);backdrop-filter:blur(4px);}
 
 /* ---------- DASHBOARD TOP GRID ---------- */
-.dashboard-top{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(280px,0.9fr);gap:18px;margin-bottom:18px;align-items:stretch;}
+.dashboard-top{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(280px,0.9fr);gap:18px;margin-bottom:18px;align-items:stretch;min-width:0;}
 .dashboard-top .hero{margin-bottom:0;}
 
 /* ---------- KPI ---------- */
-.stat-row{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:22px;}
+.stat-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;margin-bottom:22px;}
+.stat-row-4col{grid-template-columns:repeat(4,minmax(0,1fr));}
 .stat-card{padding:18px 18px;display:flex;flex-direction:column;gap:10px;position:relative;transition:transform var(--ease), box-shadow var(--ease);}
 .stat-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);}
 .stat-top{display:flex;align-items:center;justify-content:space-between;}
@@ -366,11 +379,12 @@ html[data-theme="dark"] .dropdown-scrim{background:rgba(0,0,0,0.28);}
 .link-sm{font-size:12px;color:var(--gold);font-weight:700;display:inline-flex;align-items:center;gap:5px;}
 .link-sm svg{width:13px;height:13px;}
 
-.two-col{display:grid;grid-template-columns:2.1fr 1fr;gap:18px;align-items:start;margin-bottom:18px;}
-.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;}
+.two-col{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(0,1fr);gap:18px;align-items:start;margin-bottom:18px;min-width:0;}
+.three-col{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:18px;min-width:0;}
+.two-col > *, .three-col > *, .dashboard-top > *{min-width:0;max-width:100%;box-sizing:border-box;}
 
 /* ---------- CELEBRATION TILES ---------- */
-.celeb-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;padding:4px 22px 22px;}
+.celeb-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;padding:4px 22px 22px;}
 .celeb-card{
   border-radius:18px;overflow:hidden;position:relative;
   background:rgba(255,252,244,.72);border:1px solid rgba(201,145,50,.20);
@@ -413,12 +427,17 @@ html[data-theme="dark"] .dropdown-scrim{background:rgba(0,0,0,0.28);}
 .attn-arrow svg{width:14px;height:14px;}
 
 /* ---------- JOURNEY ---------- */
-.journey{display:flex;justify-content:space-between;padding:26px 26px 22px;position:relative;}
+.journey{
+  display:flex;justify-content:space-between;padding:26px 26px 22px;position:relative;
+  overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+  gap:14px;
+}
+.journey::-webkit-scrollbar{display:none;}
 .journey::before{
-  content:"";position:absolute;top:41px;left:60px;right:60px;height:2px;
+  content:"";position:absolute;top:41px;left:26px;right:26px;height:2px;
   background:linear-gradient(90deg, var(--gold), var(--champagne) 78%, var(--champagne));
 }
-.journey-step{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:11px;color:var(--muted);text-align:center;width:70px;position:relative;font-weight:600;}
+.journey-step{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:11px;color:var(--muted);text-align:center;width:70px;flex-shrink:0;position:relative;font-weight:600;}
 .journey-step .circ{width:38px;height:38px;border-radius:50%;background:var(--sage-bg);color:var(--sage);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 5px var(--ivory);z-index:1;}
 .journey-step .circ svg{width:16px;height:16px;}
 .journey-step.current .circ{background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#fff;box-shadow:0 0 0 5px var(--ivory), 0 0 14px rgba(201,145,50,0.5);}
@@ -427,10 +446,11 @@ html[data-theme="dark"] .dropdown-scrim{background:rgba(0,0,0,0.28);}
 
 /* ---------- DONUT ---------- */
 .donut-wrap{padding:10px 22px 22px;display:flex;flex-direction:column;align-items:center;}
-.donut-wrap-stack{flex-direction:row;align-items:center;gap:20px;padding:14px 22px 18px;}
-.ledger-figures{display:flex;flex-direction:column;gap:9px;flex:1;}
-.lf-row{display:flex;justify-content:space-between;align-items:baseline;font-size:12px;color:var(--muted);font-weight:600;}
-.lf-row b{font-family:'Playfair Display',serif;font-size:16px;color:var(--brown);font-weight:700;}
+.donut-wrap-stack{flex-direction:row;align-items:center;gap:20px;padding:14px 22px 18px;min-width:0;}
+.ledger-figures{display:flex;flex-direction:column;gap:9px;flex:1;min-width:0;}
+.lf-row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:12px;color:var(--muted);font-weight:600;min-width:0;}
+.lf-row span{flex-shrink:0;}
+.lf-row b{font-family:'Playfair Display',serif;font-size:16px;color:var(--brown);font-weight:700;white-space:nowrap;min-width:0;}
 .lf-row.lf-paid b{color:var(--sage);}
 .lf-row.lf-remaining b{color:var(--rose);}
 .donut{width:112px;height:112px;border-radius:50%;background:conic-gradient(var(--sage) 0 67%, var(--rose) 67% 100%);display:flex;align-items:center;justify-content:center;margin-bottom:0;position:relative;flex-shrink:0;}
@@ -486,8 +506,8 @@ tbody tr:hover{background:rgba(238,217,183,0.22);}
 .cal-nav{width:34px;height:34px;border-radius:10px;border:1px solid var(--champagne);background:var(--cream);color:var(--brown);display:flex;align-items:center;justify-content:center;transition:transform var(--ease), box-shadow var(--ease);}
 .cal-nav:hover{transform:translateY(-1px);box-shadow:var(--shadow-soft);}
 .cal-nav svg{width:15px;height:15px;}
-.cal-weekdays{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;padding:16px 22px 4px;font-size:10.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);font-weight:700;text-align:center;}
-.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;padding:4px 22px 22px;}
+.cal-weekdays{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;padding:16px 22px 4px;font-size:10.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);font-weight:700;text-align:center;}
+.cal-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;padding:4px 22px 22px;}
 .cal-cell{
   min-height:88px;border-radius:12px;border:1px solid var(--champagne);
   background:var(--cream);padding:8px 7px;display:flex;flex-direction:column;gap:5px;
@@ -513,7 +533,7 @@ tbody tr:hover{background:rgba(238,217,183,0.22);}
 .filter-search .search-box{margin-bottom:6px;background:var(--cream);border-radius:11px;padding:9px 14px;}
 
 /* ---------- KPI STRIP (ledger) ---------- */
-.kpi-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:22px;}
+.kpi-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:22px;}
 .kpi-card{padding:18px 20px;}
 .kpi-top{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
 .kpi-top .stat-icon{width:34px;height:34px;}
@@ -526,7 +546,7 @@ tbody tr:hover{background:rgba(238,217,183,0.22);}
 .chip.active{background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#fff;}
 .chip:hover:not(.active){border-color:var(--gold-light);color:var(--brown);}
 
-.vendor-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:20px 22px;}
+.vendor-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;padding:20px 22px;}
 .vendor-card{border-radius:18px;overflow:hidden;background:var(--glass-strong);border:1px solid var(--glass-border);transition:transform var(--ease), box-shadow var(--ease);}
 .vendor-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);}
 .vendor-img-wrap{height:120px;overflow:hidden;}
@@ -556,7 +576,7 @@ tbody tr:hover{background:rgba(238,217,183,0.22);}
 .theme-dot:hover{transform:scale(1.1);}
 .theme-dot.active{border-color:var(--brown);}
 
-.quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:20px 22px;}
+.quick-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;padding:20px 22px;}
 .quick-card{border-radius:16px;padding:16px;text-align:center;background:var(--cream);border:1px solid var(--champagne);transition:transform var(--ease), box-shadow var(--ease);}
 .quick-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-soft);}
 .quick-card svg{width:19px;height:19px;color:var(--gold);margin-bottom:9px;}
@@ -597,16 +617,16 @@ tbody tr:hover{background:rgba(238,217,183,0.22);}
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width:1180px){
-  .two-col,.settings-grid,.dashboard-top{grid-template-columns:1fr;}
-  .three-col{grid-template-columns:1fr 1fr;}
-  .celeb-grid{grid-template-columns:repeat(3,1fr);}
-  .vendor-grid{grid-template-columns:repeat(2,1fr);}
-  .stat-row{grid-template-columns:repeat(3,1fr);}
-  .kpi-strip{grid-template-columns:repeat(2,1fr);}
-  .quick-grid{grid-template-columns:repeat(2,1fr);}
+  .two-col,.settings-grid,.dashboard-top{grid-template-columns:minmax(0,1fr);}
+  .three-col{grid-template-columns:minmax(0,1fr) minmax(0,1fr);}
+  .celeb-grid{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .vendor-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .stat-row{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .kpi-strip{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .quick-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
 }
 @media (max-width:900px){
-  .stat-row{grid-template-columns:repeat(2,1fr);}
+  .stat-row{grid-template-columns:repeat(2,minmax(0,1fr));}
 }
 @media (max-width:860px){
   .mobile-toggle{
@@ -632,7 +652,7 @@ tbody tr:hover{background:rgba(238,217,183,0.22);}
   .main{padding:16px 16px 50px;margin-left:0;}
   .celeb-grid{grid-template-columns:1fr 1fr;}
   .vendor-grid{grid-template-columns:1fr;}
-  .three-col{grid-template-columns:1fr;}
+  .three-col{grid-template-columns:minmax(0,1fr);}
   .kpi-strip{grid-template-columns:1fr 1fr;}
   .quick-grid{grid-template-columns:1fr 1fr;}
 
@@ -660,10 +680,146 @@ tbody tr:hover{background:rgba(238,217,183,0.22);}
     font-size:0;
   }
 
+  /* Filter tabs: horizontal scroll instead of awkward multi-row wrap */
+  .tabs-row{
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    gap:18px;
+    padding:0 16px;
+  }
+  .tabs-row::-webkit-scrollbar{display:none;}
+  .tabs-row .tab-item{flex-shrink:0;white-space:nowrap;}
+  .chip-row{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:14px 16px;}
+  .chip-row::-webkit-scrollbar{display:none;}
+  .chip{flex-shrink:0;white-space:nowrap;}
+  .settings-tabs{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:16px;}
+  .settings-tabs::-webkit-scrollbar{display:none;}
+  .settings-tabs span{flex-shrink:0;white-space:nowrap;}
+
   /* Dropdown already responsive via width:min(280px, calc(100vw - 32px)) */
 }
+
+/* ---------- SETTINGS: dedicated mobile breakpoint ---------- */
+@media (max-width:768px){
+  .settings-grid{grid-template-columns:1fr;gap:16px;}
+  .settings-tabs{padding:14px 16px;gap:18px;}
+  .form-body{padding:20px;}
+  .field-row{grid-template-columns:1fr;gap:14px;margin-top:14px;}
+  .field{min-width:0;}
+  .field input,.field select{width:100%;max-width:100%;min-width:0;box-sizing:border-box;}
+  .avatar-lg{width:84px;height:84px;font-size:28px;flex-shrink:0;}
+  .form-body > .profile-photo-row{flex-wrap:wrap;gap:14px;}
+  .form-body .btn.outline.small{white-space:nowrap;}
+  #saveProfileBtn,#savePrefsBtn{width:100%;justify-content:center;}
+  .quick-grid{grid-template-columns:1fr;gap:12px;padding:16px;}
+  .quick-card{padding:16px;text-align:left;display:flex;flex-direction:column;}
+  .theme-row{flex-wrap:wrap;}
+}
+
+/* ---------- DASHBOARD: Journey / Ledger / Recent Moments overflow fix ---------- */
+@media (max-width:768px){
+  /* Every card and its grid/flex children must never exceed the viewport */
+  .three-col > .glass,
+  .dashboard-top > .glass,
+  .dashboard-top > .hero,
+  #celebPanel{
+    width:100%;max-width:100%;min-width:0;box-sizing:border-box;overflow:hidden;
+  }
+
+  /* Journey header: title can ellipsis, badge never shrinks/pushes off-card */
+  .section-head{min-width:0;gap:10px;}
+  .section-head h3{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1 1 auto;}
+  .section-head > .badge,
+  .section-head > .link-sm{flex-shrink:0;}
+
+  /* Journey steps: distribute evenly across the card instead of scrolling */
+  .journey{
+    overflow-x:visible;
+    gap:6px;
+    padding:22px 14px 18px;
+    width:100%;max-width:100%;min-width:0;box-sizing:border-box;
+  }
+  .journey-step{
+    flex:1 1 0;
+    width:auto;
+    min-width:0;
+    font-size:10px;
+  }
+  .journey-step .circ{width:36px;height:36px;box-shadow:0 0 0 4px var(--ivory);}
+  .journey-step .circ svg{width:15px;height:15px;}
+  .journey::before{left:18px;right:18px;top:39px;}
+  .journey-note{margin:4px 18px 16px;font-size:11px;}
+
+  /* Ledger: guaranteed-safe two-column layout, values never overflow */
+  .donut-wrap-stack{
+    width:100%;max-width:100%;min-width:0;box-sizing:border-box;
+    gap:16px;padding:14px 18px 16px;
+  }
+  .donut{flex-shrink:0;}
+  .ledger-figures{min-width:0;width:100%;}
+  .lf-row{min-width:0;gap:8px;}
+  .lf-row span{flex:1 1 auto;min-width:0;}
+  .lf-row b{flex:0 1 auto;white-space:nowrap;}
+
+  /* Recent Moments: text wraps naturally, never forces card wider */
+  .moments{width:100%;max-width:100%;min-width:0;box-sizing:border-box;}
+  .moment-row{width:100%;max-width:100%;min-width:0;box-sizing:border-box;}
+  .moment-row .txt{min-width:0;flex:1 1 auto;overflow-wrap:break-word;word-break:break-word;}
+}
 @media (max-width:600px){
-  .stat-row,.celeb-grid{grid-template-columns:1fr;}
+  .celeb-grid{grid-template-columns:1fr;}
+
+  /* KPI: 2-column compact grid instead of stacked full-width cards */
+  .stat-row{
+    grid-template-columns:repeat(2, minmax(0,1fr));
+    gap:10px;
+  }
+  .stat-card{
+    padding:14px;
+    min-height:105px;
+    gap:8px;
+  }
+  .stat-value{font-size:20px;overflow-wrap:break-word;word-break:break-word;}
+  .stat-label{font-size:10.5px;}
+  .stat-icon{width:32px;height:32px;}
+  .spark{width:12px;height:12px;}
+
+  /* Hero text sizing */
+  .hero h1{font-size:24px;line-height:1.15;}
+  .hero p{font-size:11px;line-height:1.5;}
+
+  /* Standalone attention card once JS relocates it out of dashboard-top */
+  #attnCard.attn-standalone{margin-bottom:18px;}
+
+  /* Ledger: compact two-column layout that never overflows */
+  .donut-wrap-stack{gap:16px;}
+  .donut{width:112px;height:112px;}
+  .donut::after{width:76px;height:76px;}
+  .lf-row{font-size:11.5px;}
+  .lf-row b{font-size:16px;}
+}
+@media (max-width:375px){
+  .donut-wrap-stack{gap:14px;padding:14px 16px 16px;}
+  .donut{width:100px;height:100px;}
+  .donut::after{width:68px;height:68px;}
+  .donut svg.floral{width:22px;height:22px;}
+  .donut-pct{font-size:13px;}
+  .lf-row b{font-size:15px;}
+  .lf-row{font-size:11px;}
+}
+
+@media (max-width:600px){
+  /* Stabilize compositing to avoid stale-frame "ghost" repaint artifacts
+     on Android WebView when scrolling past stacked blurred glass cards */
+  .three-col > .glass,
+  .dashboard-top .glass,
+  #celebPanel{
+    will-change:transform;
+    transform:translateZ(0);
+    -webkit-transform:translateZ(0);
+  }
 }
 
 @media (max-width:520px){
@@ -743,6 +899,10 @@ tbody tr:hover{background:rgba(238,217,183,0.22);}
       </div>
     </div>
 
+    <div class="sidebar-footer-caption">
+      <span data-i18n="beautifulMoments">Beautiful moments, thoughtfully kept.</span>
+    </div>
+
     <div class="sidebar-deco">
       <svg viewBox="0 0 140 160" fill="none">
         <ellipse cx="70" cy="148" rx="26" ry="6" fill="#C99132" opacity="0.12"/>
@@ -803,7 +963,7 @@ tbody tr:hover{background:rgba(238,217,183,0.22);}
         </div>
       </div>
 
-      <div class="dashboard-top">
+      <div class="dashboard-top" id="dashboardTop">
         <div class="hero">
           <div class="hero-content">
             <div class="hero-eyebrow">✦ I Moi Book</div>
@@ -815,7 +975,7 @@ tbody tr:hover{background:rgba(238,217,183,0.22);}
             </div>
           </div>
         </div>
-        <div class="glass">
+        <div class="glass" id="attnCard">
           <div class="section-head"><h3 data-i18n="needsAttention">Needs Your Attention</h3></div>
           <div class="attn-list">
             <div class="attn-item"><div class="attn-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><path d="m16 11 2 2 3.5-3.5"/></svg></div><div><b data-i18n="rsvpPending">12 Guest RSVPs pending</b><span data-i18n="followUp">Follow up with guests</span></div><span class="attn-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></span></div>
@@ -834,7 +994,7 @@ tbody tr:hover{background:rgba(238,217,183,0.22);}
         <div class="stat-card glass"><div class="stat-top"><div class="stat-icon" style="background:var(--sage-bg);color:var(--sage)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="m8 13 2.5 2.5L16 10"/></svg></div><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.5 6.5L20 10l-6.5 1.5L12 18l-1.5-6.5L4 10l6.5-1.5Z"/></svg></div><div class="stat-value">07</div><div class="stat-label" data-i18n="tasksToday">Tasks Today</div></div>
       </div>
 
-      <div class="glass" style="margin-bottom:18px;">
+      <div class="glass" style="margin-bottom:18px;" id="celebPanel">
         <div class="section-head"><h3 data-i18n="upcomingCelebrations">Upcoming Celebrations</h3><span class="link-sm" data-view-link="events"><span data-i18n="viewAll">View All</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
         <div class="celeb-grid" id="celebGrid">
           <div class="celeb-card"><div class="celeb-img" style="background-image:url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=500&auto=format&fit=crop')"><div class="date-badge"><div class="d">18</div><div class="m">Aug</div></div></div><div class="celeb-body"><div class="celeb-name">Arjun &amp; Priya</div><div class="celeb-type" data-i18n="weddingCelebration">Wedding Celebration</div><div class="celeb-meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 21s-7-5-7-11a7 7 0 0 1 14 0c0 6-7 11-7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg>Chennai · 342 Guests</div><span class="badge confirmed"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="statusConfirmed">Confirmed</span></span></div></div>
@@ -845,7 +1005,7 @@ tbody tr:hover{background:rgba(238,217,183,0.22);}
         </div>
       </div>
 
-      <div class="three-col">
+      <div class="three-col" id="threeColRow">
         <div class="glass">
           <div class="section-head"><h3>Arjun &amp; Priya — <span data-i18n="journey">Journey</span></h3><span class="badge confirmed"><span data-i18n="pctReady">78% Ready</span></span></div>
           <div class="journey">
@@ -931,7 +1091,7 @@ tbody tr:hover{background:rgba(238,217,183,0.22);}
           <button class="btn" id="guestsAddBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> <span data-i18n="addGuest">Add Guest</span></button>
         </div>
       </div>
-      <div class="stat-row" style="grid-template-columns:repeat(4,1fr);">
+      <div class="stat-row stat-row-4col" id="guestsStatRow">
         <div class="stat-card glass"><div class="stat-top"><div class="stat-icon" style="background:var(--amber-bg);color:var(--amber)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17.5" cy="8.5" r="2.6"/><path d="M15.5 14.2c2.9.3 5 2.4 5 5.8"/></svg></div></div><div class="stat-value">428</div><div class="stat-label" data-i18n="totalGuests">Total Guests</div></div>
         <div class="stat-card glass"><div class="stat-top"><div class="stat-icon" style="background:var(--sage-bg);color:var(--sage)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg></div></div><div class="stat-value">312</div><div class="stat-label" data-i18n="attendingLabel">Attending</div></div>
         <div class="stat-card glass"><div class="stat-top"><div class="stat-icon" style="background:var(--rose-bg);color:#C97A6A"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></div></div><div class="stat-value">62</div><div class="stat-label" data-i18n="notAttendingLabel">Not Attending</div></div>
@@ -1043,7 +1203,7 @@ tbody tr:hover{background:rgba(238,217,183,0.22);}
             <span class="active" data-tab="profile" data-i18n="tabProfile">Profile</span><span data-tab="preferences" data-i18n="tabPreferences">Preferences</span><span data-tab="notifications" data-i18n="tabNotifications">Notifications</span><span data-tab="security" data-i18n="tabSecurity">Security</span><span data-tab="event" data-i18n="tabEventPrefs">Event Preferences</span><span data-tab="payment" data-i18n="tabPaymentSettings">Payment Settings</span>
           </div>
           <div class="form-body" id="settingsPanel-profile">
-            <div style="display:flex;align-items:center;gap:18px;">
+            <div class="profile-photo-row" style="display:flex;align-items:center;gap:18px;">
               <div class="avatar-lg">A</div>
               <div><button class="btn outline small" data-i18n="changePhoto">Change Photo</button></div>
             </div>
@@ -1095,7 +1255,7 @@ tbody tr:hover{background:rgba(238,217,183,0.22);}
 
         <div class="glass">
           <div class="section-head"><h3 data-i18n="quickSettings">Quick Settings</h3></div>
-          <div class="quick-grid" style="grid-template-columns:1fr 1fr;">
+          <div class="quick-grid" id="quickGrid">
             <div class="quick-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v3"/><path d="M3 8h18v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M9 12h6"/></svg><div class="t" data-i18n="backupExport">Backup &amp; Export</div><div class="s" data-i18n="exportYourData">Export your data</div></div>
             <div class="quick-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg><div class="t" data-i18n="templates">Templates</div><div class="s" data-i18n="manageTemplates">Manage templates</div></div>
             <div class="quick-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg><div class="t" data-i18n="inviteTeam">Invite Team</div><div class="s" data-i18n="addTeamMembers">Add team members</div></div>
@@ -1184,6 +1344,7 @@ const translations = {
     navDashboard:"Dashboard", navEvents:"Events", navGuests:"Guests", navLedger:"Ledger", navVendors:"Vendors", navSettings:"Settings",
     themeLabel:"Light",
     onRightPath:"You're on the right path", keepCrossing:"Keep crossing beautiful memories.",
+    beautifulMoments:"Beautiful moments, thoughtfully kept.",
     welcomeBack:"Welcome back", goodEvening:"Good Evening, Arun", mayEvery:"May every celebration become a beautiful memory.",
     searchDash:"Search events, guests...", searchGuests:"Search guests...",
     notifications:"Notifications", rsvpPending:"12 Guest RSVPs pending", followUp:"Follow up with guests",
@@ -1260,6 +1421,7 @@ const translations = {
     navDashboard:"டாஷ்போர்டு", navEvents:"நிகழ்வுகள்", navGuests:"விருந்தினர்கள்", navLedger:"கணக்கேடு", navVendors:"விற்பனையாளர்கள்", navSettings:"அமைப்புகள்",
     themeLabel:"வெளிச்சம்",
     onRightPath:"நீங்கள் சரியான பாதையில் உள்ளீர்கள்", keepCrossing:"அழகான நினைவுகளைத் தொடர்ந்து சேர்க்கவும்.",
+    beautifulMoments:"அழகான தருணங்கள், அன்புடன் பாதுகாக்கப்பட்டவை.",
     welcomeBack:"மீண்டும் வருக", goodEvening:"மாலை வணக்கம், அருண்", mayEvery:"ஒவ்வொரு கொண்டாட்டமும் அழகான நினைவாக மாறட்டும்.",
     searchDash:"நிகழ்வுகள், விருந்தினர்களைத் தேடுங்கள்...", searchGuests:"விருந்தினர்களைத் தேடுங்கள்...",
     notifications:"அறிவிப்புகள்", rsvpPending:"12 விருந்தினர் பதில் நிலுவையில்", followUp:"விருந்தினர்களை தொடர்பு கொள்ளவும்",
@@ -1402,6 +1564,33 @@ navItems.forEach(item=> item.addEventListener('click', ()=> goToView(item.datase
 document.querySelectorAll('[data-view-link]').forEach(el=>{
   el.addEventListener('click', ()=> goToView(el.dataset.viewLink) );
 });
+
+/* ---------- Mobile dashboard reorder ---------- */
+(function(){
+  const dashboardTop = document.getElementById('dashboardTop');
+  const attnCard = document.getElementById('attnCard');
+  const celebPanel = document.getElementById('celebPanel');
+  const threeColRow = document.getElementById('threeColRow');
+  if(!dashboardTop || !attnCard || !celebPanel || !threeColRow) return;
+  const mq = window.matchMedia('(max-width:600px)');
+  function applyDashboardOrder(){
+    if(mq.matches){
+      if(attnCard.parentElement !== celebPanel.parentElement || attnCard.previousElementSibling !== celebPanel){
+        celebPanel.parentElement.insertBefore(attnCard, threeColRow);
+        attnCard.classList.add('attn-standalone');
+      }
+    }else{
+      if(attnCard.parentElement !== dashboardTop){
+        dashboardTop.appendChild(attnCard);
+        attnCard.classList.remove('attn-standalone');
+      }
+    }
+  }
+  applyDashboardOrder();
+  if(mq.addEventListener) mq.addEventListener('change', applyDashboardOrder);
+  else if(mq.addListener) mq.addListener(applyDashboardOrder);
+  window.addEventListener('resize', applyDashboardOrder);
+})();
 
 /* ---------- Mobile sidebar ---------- */
 const sidebar = document.getElementById('sidebar');
