@@ -583,26 +583,209 @@ tbody tr:hover{background:rgba(238,217,183,0.22);}
 .quick-card .t{font-weight:700;font-size:12.5px;color:var(--brown);}
 .quick-card .s{font-size:10.5px;color:var(--muted);margin-top:2px;}
 
+/* ---------- GUEST PROFILE ---------- */
+.gp-header{padding:22px;margin-bottom:18px;}
+.gp-header-main{display:flex;align-items:center;gap:18px;}
+.gp-avatar{
+  width:72px;height:72px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold));
+  color:#fff;font-weight:700;font-size:28px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;
+  border:3px solid rgba(255,255,255,0.55);
+  box-shadow:0 6px 18px rgba(201,145,50,0.25);
+}
+.gp-header-info{min-width:0;flex:1;}
+.gp-name{margin:0 0 6px;font-size:22px;font-weight:600;color:var(--brown);line-height:1.2;}
+.gp-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px;}
+.gp-relation{font-size:13px;font-weight:600;color:var(--muted);}
+.gp-dot{color:var(--champagne);}
+.gp-contact{font-size:12.5px;color:var(--muted);}
+
+.gp-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:18px;align-items:start;}
+.gp-events-card{grid-column:1 / -1;}
+
+.gp-details{padding:4px 22px 20px;display:flex;flex-direction:column;gap:0;}
+.gp-row{
+  display:flex;justify-content:space-between;align-items:flex-start;gap:16px;
+  padding:11px 0;border-bottom:1px dashed var(--champagne);
+  font-size:12.5px;
+}
+.gp-row:last-child{border-bottom:none;}
+.gp-row span{color:var(--muted);font-weight:600;flex-shrink:0;}
+.gp-row b{color:var(--brown);font-weight:600;text-align:right;overflow-wrap:break-word;word-break:break-word;}
+
+.gp-moi-summary{padding:4px 22px 12px;}
+.gp-moi-total{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:12px 14px;border-radius:12px;margin-bottom:12px;
+  background:linear-gradient(135deg, rgba(231,189,104,0.28), rgba(201,145,50,0.12));
+  border:1px solid rgba(201,145,50,0.25);
+}
+.gp-moi-total span{font-size:12px;font-weight:700;color:var(--muted);}
+.gp-moi-total b{font-size:18px;font-family:'Playfair Display',serif;color:var(--brown);}
+.gp-moi-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.gp-moi-chip{
+  display:flex;justify-content:space-between;align-items:center;gap:8px;
+  padding:10px 12px;border-radius:11px;
+  background:var(--cream);border:1px solid var(--champagne);
+  font-size:11.5px;min-width:0;
+}
+.gp-moi-chip span{color:var(--muted);font-weight:600;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.gp-moi-chip b{color:var(--brown);font-weight:700;flex-shrink:0;}
+
+.gp-history{padding:0 22px 18px;display:flex;flex-direction:column;gap:0;}
+.gp-hist-item{
+  display:flex;align-items:center;gap:12px;padding:11px 0;
+  border-bottom:1px dashed var(--champagne);
+}
+.gp-hist-item:last-child{border-bottom:none;}
+.gp-hist-ico{
+  width:36px;height:36px;border-radius:10px;flex-shrink:0;
+  background:var(--amber-bg);display:flex;align-items:center;justify-content:center;font-size:16px;
+}
+.gp-hist-txt{min-width:0;flex:1;}
+.gp-hist-txt b{display:block;font-size:13px;color:var(--brown);font-weight:700;}
+.gp-hist-txt span{font-size:11px;color:var(--muted);}
+
+.gp-events{padding:4px 22px 18px;display:flex;flex-direction:column;gap:10px;}
+.gp-event-item{
+  display:flex;align-items:center;gap:12px;padding:10px 0;
+  border-bottom:1px dashed var(--champagne);
+}
+.gp-event-item:last-child{border-bottom:none;}
+.gp-event-thumb{
+  width:48px;height:48px;border-radius:12px;flex-shrink:0;
+  background-size:cover;background-position:center;
+}
+.gp-event-info{min-width:0;flex:1;}
+.gp-event-info b{display:block;font-size:13.5px;color:var(--brown);font-weight:700;}
+.gp-event-info span{font-size:11.5px;color:var(--muted);}
+
+#guestsTableBody tr{cursor:pointer;}
+
+@media (max-width:900px){
+  .gp-grid{grid-template-columns:1fr;}
+  .gp-events-card{grid-column:auto;}
+}
+@media (max-width:700px){
+  .gp-header{padding:16px;}
+  .gp-avatar{width:60px;height:60px;font-size:22px;}
+  .gp-name{font-size:18px;}
+  .gp-details,.gp-moi-summary,.gp-history,.gp-events{padding-left:16px;padding-right:16px;}
+  .gp-moi-grid{grid-template-columns:1fr 1fr;}
+  .gp-row{flex-direction:column;gap:4px;}
+  .gp-row b{text-align:left;}
+  #view-guest-profile .top-actions .btn.outline span{display:none;}
+}
+
+/* ---------- MOI LIST ---------- */
+.moi-list{display:flex;flex-direction:column;padding:4px 0 8px;}
+.moi-card{
+  padding:14px 18px;
+  border-bottom:1px solid rgba(238,217,183,0.65);
+  transition:background var(--ease);
+  min-width:0;
+}
+.moi-card:last-child{border-bottom:none;}
+.moi-card:hover{background:rgba(238,217,183,0.18);}
+.moi-card-top{display:flex;align-items:center;gap:12px;margin-bottom:8px;}
+.moi-avatar{
+  width:44px;height:44px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold));
+  color:#fff;font-weight:700;font-size:15px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;
+}
+.moi-who{min-width:0;flex:1;}
+.moi-name{font-weight:700;font-size:14px;color:var(--brown);line-height:1.25;}
+.moi-event{font-size:11.5px;color:var(--muted);margin-top:2px;}
+.moi-detail{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:8px;padding-left:56px;}
+.moi-kind{font-size:12.5px;color:var(--muted);font-weight:600;}
+.moi-amount{font-size:14px;font-weight:700;color:var(--brown);font-family:'Playfair Display',serif;}
+.moi-card-foot{display:flex;align-items:center;gap:10px;padding-left:56px;flex-wrap:wrap;}
+.moi-date{font-size:11.5px;color:var(--muted);margin-right:auto;}
+.moi-card-foot .row-actions button{width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;padding:0;border-radius:10px;}
+
+@media (max-width:700px){
+  .moi-card{padding:12px 14px;}
+  .moi-detail,.moi-card-foot{padding-left:0;}
+  .moi-avatar{width:42px;height:42px;font-size:14px;}
+  #view-moi .stat-row-4col{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}
+  #view-moi .stat-card{padding:14px;}
+  #view-moi .stat-value{font-size:18px;}
+  #moiFilterTabs{padding:0 14px;}
+}
+
 /* ---------- MODALS ---------- */
 .modal-overlay{
   position:fixed;inset:0;background:rgba(59,41,20,0.42);backdrop-filter:blur(3px);
-  display:none;align-items:center;justify-content:center;z-index:100;padding:20px;
+  display:none;align-items:center;justify-content:center;z-index:100;
+  padding:16px;padding:max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(16px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+  overscroll-behavior:contain;
 }
 .modal-overlay.open{display:flex;animation:fadeIn 0.25s ease;}
+body.modal-open{overflow:hidden;touch-action:none;}
+
 .modal{
-  width:100%;max-width:520px;max-height:88vh;overflow-y:auto;
+  width:100%;
+  max-width:520px;
+  max-height:min(90dvh, 88vh);
+  display:flex;
+  flex-direction:column;
+  overflow:hidden; /* header/footer fixed; only body scrolls */
   background:var(--glass-strong);backdrop-filter:blur(24px);
   border:1px solid var(--glass-border);border-radius:22px;box-shadow:var(--shadow);
   padding:0;
+  min-height:0;
 }
-.modal-head{display:flex;align-items:center;justify-content:space-between;padding:22px 24px 16px;border-bottom:1px solid var(--champagne);}
+
+/* Form fills remaining space between fixed head and foot */
+.modal > form{
+  display:flex;
+  flex-direction:column;
+  flex:1 1 auto;
+  min-height:0;
+  overflow:hidden;
+}
+
+.modal-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 20px 14px;
+  border-bottom:1px solid var(--champagne);
+  flex-shrink:0;
+}
 .modal-head h3{margin:0;font-size:18px;color:var(--brown);font-weight:600;}
-.modal-close{width:44px;height:44px;border-radius:9px;border:1px solid var(--champagne);background:var(--cream);display:flex;align-items:center;justify-content:center;color:var(--muted);}
+.modal-close{width:44px;height:44px;border-radius:9px;border:1px solid var(--champagne);background:var(--cream);display:flex;align-items:center;justify-content:center;color:var(--muted);flex-shrink:0;}
 .modal-close svg{width:14px;height:14px;}
-.modal-body{padding:20px 24px;}
-.modal-body .field{margin-bottom:14px;}
-.modal-body .field-row{margin-top:0;margin-bottom:14px;}
-.modal-foot{display:flex;justify-content:flex-end;gap:12px;padding:16px 24px 22px;}
+
+/* ONLY this section scrolls */
+.modal-body{
+  padding:18px 20px;
+  flex:1 1 auto;
+  min-height:0;
+  overflow-y:auto;
+  overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior:contain;
+}
+.modal-body .field{margin-bottom:14px;min-width:0;}
+.modal-body .field-row{margin-top:0;margin-bottom:14px;min-width:0;}
+.modal-body .field input,
+.modal-body .field select{
+  width:100%;
+  max-width:100%;
+  min-width:0;
+  box-sizing:border-box;
+}
+
+.modal-foot{
+  display:flex;justify-content:flex-end;gap:12px;
+  padding:14px 20px calc(16px + env(safe-area-inset-bottom));
+  border-top:1px solid var(--champagne);
+  flex-shrink:0;
+  background:var(--glass-strong);
+}
 
 /* ---------- TOAST ---------- */
 .toast-stack{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;flex-direction:column;gap:10px;}
@@ -656,16 +839,76 @@ tbody tr:hover{background:rgba(238,217,183,0.22);}
   .kpi-strip{grid-template-columns:1fr 1fr;}
   .quick-grid{grid-template-columns:1fr 1fr;}
 
-  /* Header */
-  .topbar{gap:10px;margin-bottom:16px;row-gap:12px;}
-  .mobile-toggle{order:1;}
-  .top-actions{order:2;margin-left:auto;}
-  .greeting{order:3;flex-basis:100%;width:100%;}
+  /* Header — mobile layout */
+  .topbar{
+    gap:10px;
+    margin-bottom:16px;
+    row-gap:12px;
+    justify-content:flex-start;
+    flex-wrap:wrap;
+    align-items:center;
+  }
+  /* Events / Guests / Vendors: keep title + Create on one row (no wrap) */
+  .topbar:has(.page-title){
+    flex-wrap:nowrap;
+  }
+  .mobile-toggle{order:1;flex-shrink:0;}
+
+  /* ---- Dashboard ---- */
+  /* First row: [☰] .................. [Bell][Avatar] */
+  /* Then greeting text full width below */
+  .topbar:has(.greeting) .top-actions{
+    order:2;
+    margin-left:auto;
+    flex-shrink:0;
+  }
+  .greeting{
+    order:3;
+    flex-basis:100%;
+    width:100%;
+  }
   .greeting .eyebrow{font-size:10px;margin-bottom:2px;}
   .greeting h1{font-size:20px;}
   .greeting p{font-size:11.5px;}
   .greeting-divider{display:none;}
-  .search-box{max-width:none;order:4;flex-basis:100%;width:100%;min-height:46px;padding:9px 14px;}
+  .search-box{
+    max-width:none;
+    order:4;
+    flex-basis:100%;
+    width:100%;
+    min-height:46px;
+    padding:9px 14px;
+  }
+
+  /* ---- Other pages (Events / Guests / Vendors / Ledger / Settings) ---- */
+  /* [☰]  All Events                    [+ Create]  ← same row */
+  .page-title{
+    order:2;
+    flex:1 1 auto;
+    min-width:0;
+    font-size:18px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .topbar:has(.page-title) .top-actions{
+    order:3;
+    margin-left:auto;          /* push Create to the right, same row */
+    flex-shrink:0;
+    flex-wrap:nowrap;
+    gap:6px;
+  }
+  .topbar:has(.page-title) .top-actions .btn,
+  .topbar:has(.page-title) .top-actions .btn.outline{
+    flex-shrink:0;
+    padding:8px 12px;
+    font-size:12px;
+    white-space:nowrap;
+  }
+  .topbar:has(.page-title) .top-actions .btn svg{
+    width:14px;
+    height:14px;
+  }
 
   /* Hero */
   .hero{min-height:0;max-height:none;padding:22px 20px;border-radius:20px;}
@@ -703,18 +946,117 @@ tbody tr:hover{background:rgba(238,217,183,0.22);}
 
 /* ---------- SETTINGS: dedicated mobile breakpoint ---------- */
 @media (max-width:768px){
-  .settings-grid{grid-template-columns:1fr;gap:16px;}
-  .settings-tabs{padding:14px 16px;gap:18px;}
-  .form-body{padding:20px;}
-  .field-row{grid-template-columns:1fr;gap:14px;margin-top:14px;}
-  .field{min-width:0;}
-  .field input,.field select{width:100%;max-width:100%;min-width:0;box-sizing:border-box;}
+  /* Prevent page-level horizontal scroll on Settings */
+  #view-settings,
+  #view-settings .settings-grid,
+  #view-settings .glass,
+  #view-settings .form-body,
+  #view-settings .quick-grid{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    box-sizing:border-box;
+  }
+
+  /* Grid + cards must never exceed viewport */
+  .settings-grid{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+  .settings-grid > .glass{
+    overflow:hidden; /* contain children; tabs scroll internally */
+  }
+
+  /* Tabs: only this container scrolls horizontally */
+  .settings-tabs{
+    display:flex;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    gap:18px;
+    padding:14px 16px;
+    width:100%;
+    max-width:100%;
+    box-sizing:border-box;
+  }
+  .settings-tabs::-webkit-scrollbar{display:none;}
+  .settings-tabs span{
+    flex-shrink:0;
+    white-space:nowrap;
+  }
+
+  /* Profile / form fields — full width, no overflow */
+  .form-body{
+    padding:16px;
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    box-sizing:border-box;
+  }
+  .field-row{
+    grid-template-columns:1fr;
+    gap:14px;
+    margin-top:14px;
+    width:100%;
+    max-width:100%;
+    min-width:0;
+  }
+  .field{
+    min-width:0;
+    width:100%;
+    max-width:100%;
+    box-sizing:border-box;
+  }
+  .field input,
+  .field select{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    box-sizing:border-box;
+  }
   .avatar-lg{width:84px;height:84px;font-size:28px;flex-shrink:0;}
-  .form-body > .profile-photo-row{flex-wrap:wrap;gap:14px;}
+  .form-body > .profile-photo-row{
+    flex-wrap:wrap;
+    gap:14px;
+    width:100%;
+    max-width:100%;
+    min-width:0;
+  }
   .form-body .btn.outline.small{white-space:nowrap;}
-  #saveProfileBtn,#savePrefsBtn{width:100%;justify-content:center;}
-  .quick-grid{grid-template-columns:1fr;gap:12px;padding:16px;}
-  .quick-card{padding:16px;text-align:left;display:flex;flex-direction:column;}
+  #saveProfileBtn,
+  #savePrefsBtn{
+    width:100%;
+    max-width:100%;
+    justify-content:center;
+    box-sizing:border-box;
+  }
+
+  /* Quick Settings — single column stack on all mobile widths */
+  .quick-grid{
+    grid-template-columns:1fr !important; /* override any later 2-col rules */
+    gap:12px;
+    padding:16px;
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    box-sizing:border-box;
+  }
+  .quick-card{
+    padding:16px;
+    text-align:left;
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    box-sizing:border-box;
+  }
+  .quick-card .t,
+  .quick-card .s{
+    overflow-wrap:break-word;
+    word-break:break-word;
+  }
   .theme-row{flex-wrap:wrap;}
 }
 
@@ -823,17 +1165,540 @@ tbody tr:hover{background:rgba(238,217,183,0.22);}
 }
 
 @media (max-width:520px){
-  .kpi-strip,.quick-grid{grid-template-columns:1fr 1fr;}
-  table{font-size:11.5px;}
-  thead{display:none;}
-  tbody td{display:block;padding:6px 16px;border-bottom:none;}
-  tbody tr{display:block;padding:12px 0;border-bottom:1px solid var(--champagne);}
+  .kpi-strip{grid-template-columns:1fr 1fr;}
+  /* Note: .quick-grid stays 1-col from the Settings mobile rules (max-width:768px) */
 }
+
+/* ============================================================
+   EVENTS + GUESTS — compact mobile card list
+   ============================================================ */
+@media (max-width:700px){
+
+  /* ---- List panel containment ---- */
+  #eventsListPanel,
+  #view-guests .glass{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    box-sizing:border-box;
+    overflow:hidden;
+  }
+
+  /* ---- Filter tabs: only the tab row scrolls ---- */
+  #eventFilterTabs,
+  #guestFilterTabs,
+  .tabs-row{
+    display:flex;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    gap:16px;
+    padding:0 16px;
+    width:100%;
+    max-width:100%;
+    box-sizing:border-box;
+  }
+  #eventFilterTabs::-webkit-scrollbar,
+  #guestFilterTabs::-webkit-scrollbar,
+  .tabs-row::-webkit-scrollbar{display:none;}
+  .tab-item{flex-shrink:0;white-space:nowrap;}
+
+  /* ---- Table → compact cards ---- */
+  #eventsListPanel table,
+  #view-guests table{
+    width:100%;
+    max-width:100%;
+    table-layout:fixed;
+    border-collapse:collapse;
+    font-size:12.5px;
+  }
+  #eventsListPanel thead,
+  #view-guests thead{display:none;}
+
+  #eventsListPanel tbody tr,
+  #view-guests tbody tr{
+    display:grid;
+    gap:6px 10px;
+    padding:14px 16px;
+    border-bottom:1px solid rgba(238,217,183,0.65);
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    box-sizing:border-box;
+  }
+  #eventsListPanel tbody tr:last-child,
+  #view-guests tbody tr:last-child{border-bottom:none;}
+  #eventsListPanel tbody tr:hover,
+  #view-guests tbody tr:hover{background:rgba(238,217,183,0.18);}
+
+  #eventsListPanel tbody td,
+  #view-guests tbody td{
+    display:block;
+    padding:0;
+    border:none;
+    min-width:0;
+    max-width:100%;
+    box-sizing:border-box;
+    overflow-wrap:break-word;
+    word-break:break-word;
+  }
+
+  /* ========== EVENTS cards ========== */
+  /* Col order: 1 Event | 2 Date | 3 Location | 4 Guests | 5 Status | 6 Actions */
+  #eventsListPanel tbody tr{
+    grid-template-columns:1fr auto;
+    grid-template-areas:
+      "event  event"
+      "date   date"
+      "loc    loc"
+      "guests guests"
+      "status actions";
+  }
+  #eventsListPanel tbody td:nth-child(1){
+    grid-area:event;
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+  }
+  #eventsListPanel .ev-thumb{
+    width:56px;
+    height:56px;
+    border-radius:12px;
+    flex-shrink:0;
+    margin-right:0;
+    display:block;
+  }
+  #eventsListPanel .ev-name{
+    font-size:14.5px;
+    font-weight:700;
+    line-height:1.25;
+    color:var(--brown);
+    display:block;
+  }
+  #eventsListPanel .ev-sub{
+    font-size:11px;
+    color:var(--muted);
+    margin-top:2px;
+    line-height:1.3;
+  }
+  #eventsListPanel tbody td:nth-child(2){
+    grid-area:date;
+    font-size:12px;
+    color:var(--muted);
+    line-height:1.35;
+  }
+  #eventsListPanel tbody td:nth-child(2)::before{
+    content:"📅 ";
+  }
+  #eventsListPanel tbody td:nth-child(2) br{display:none;}
+  #eventsListPanel tbody td:nth-child(2) .ev-sub{
+    display:inline;
+    font-size:12px;
+  }
+  #eventsListPanel tbody td:nth-child(2) .ev-sub::before{
+    content:" · ";
+  }
+  #eventsListPanel tbody td:nth-child(3){
+    grid-area:loc;
+    font-size:12px;
+    color:var(--muted);
+    line-height:1.35;
+  }
+  #eventsListPanel tbody td:nth-child(3)::before{
+    content:"📍 ";
+  }
+  #eventsListPanel tbody td:nth-child(3) br{display:none;}
+  #eventsListPanel tbody td:nth-child(3) .ev-sub{
+    display:inline;
+    font-size:12px;
+  }
+  #eventsListPanel tbody td:nth-child(3) .ev-sub::before{
+    content:" · ";
+  }
+  #eventsListPanel tbody td:nth-child(4){
+    grid-area:guests;
+    font-size:12px;
+    color:var(--muted);
+    line-height:1.35;
+  }
+  #eventsListPanel tbody td:nth-child(4)::before{
+    content:"👥 ";
+  }
+  #eventsListPanel tbody td:nth-child(4)::after{
+    content:" Guests";
+  }
+  #eventsListPanel tbody td:nth-child(5){
+    grid-area:status;
+    align-self:center;
+  }
+  #eventsListPanel tbody td:nth-child(6){
+    grid-area:actions;
+    align-self:center;
+    justify-self:end;
+  }
+  #eventsListPanel .row-actions{
+    display:flex;
+    gap:4px;
+    align-items:center;
+  }
+  #eventsListPanel .row-actions button{
+    width:42px;
+    height:42px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:0;
+    border-radius:10px;
+  }
+  #eventsListPanel .row-actions svg{
+    width:16px;
+    height:16px;
+  }
+
+  /* ========== GUESTS cards ========== */
+  /* Col order: 1 Guest | 2 Contact | 3 Event | 4 RSVP | 5 Group | 6 Actions */
+  #view-guests tbody tr{
+    grid-template-columns:1fr auto;
+    grid-template-areas:
+      "guest  guest"
+      "contact contact"
+      "event  event"
+      "status actions";
+  }
+  #view-guests tbody td:nth-child(1){
+    grid-area:guest;
+  }
+  #view-guests .ev-name{
+    font-size:14.5px;
+    font-weight:700;
+    line-height:1.25;
+    color:var(--brown);
+  }
+  #view-guests .ev-sub{
+    font-size:11px;
+    color:var(--muted);
+    margin-top:2px;
+  }
+  #view-guests tbody td:nth-child(2){
+    grid-area:contact;
+    font-size:12px;
+    color:var(--muted);
+    line-height:1.35;
+  }
+  #view-guests tbody td:nth-child(2)::before{
+    content:"📞 ";
+  }
+  #view-guests tbody td:nth-child(2) br{display:none;}
+  #view-guests tbody td:nth-child(2) .ev-sub{
+    display:inline;
+    font-size:12px;
+  }
+  #view-guests tbody td:nth-child(2) .ev-sub::before{
+    content:" · ";
+  }
+  #view-guests tbody td:nth-child(3){
+    grid-area:event;
+    font-size:12px;
+    color:var(--muted);
+    line-height:1.35;
+  }
+  #view-guests tbody td:nth-child(3)::before{
+    content:"🎟 ";
+  }
+  #view-guests tbody td:nth-child(3) br{display:none;}
+  #view-guests tbody td:nth-child(3) .ev-sub{
+    display:inline;
+    font-size:12px;
+  }
+  #view-guests tbody td:nth-child(3) .ev-sub::before{
+    content:" · ";
+  }
+  /* Hide redundant Group column on mobile (already shown under name) */
+  #view-guests tbody td:nth-child(5){display:none;}
+  #view-guests tbody td:nth-child(4){
+    grid-area:status;
+    align-self:center;
+  }
+  #view-guests tbody td:nth-child(6){
+    grid-area:actions;
+    align-self:center;
+    justify-self:end;
+  }
+  #view-guests .row-actions{
+    display:flex;
+    gap:4px;
+    align-items:center;
+  }
+  #view-guests .row-actions button{
+    width:42px;
+    height:42px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:0;
+    border-radius:10px;
+  }
+  #view-guests .row-actions svg{
+    width:16px;
+    height:16px;
+  }
+
+  /* ---- Header: keep Create on same row as title; hide secondary btns if tight ---- */
+  #view-events .top-actions .btn,
+  #view-guests .top-actions .btn{
+    padding:8px 11px;
+    font-size:12px;
+    white-space:nowrap;
+  }
+  #view-events .top-actions .btn svg,
+  #view-guests .top-actions .btn svg{
+    width:14px;
+    height:14px;
+  }
+  /* On narrow phones, hide Calendar / Import so only + Create fits */
+  @media (max-width:400px){
+    #view-events .top-actions .btn.outline,
+    #view-guests .top-actions .btn.outline{
+      display:none;
+    }
+  }
+
+  /* Pager */
+  .pager{padding:12px 16px;}
+}
+
+/* ============================================================
+   AUTHENTICATION
+   ============================================================ */
+.auth-shell{
+  position:fixed;inset:0;z-index:300;
+  display:none;
+  min-height:100dvh;min-height:100vh;
+  overflow-y:auto;overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;
+}
+.auth-shell.open{display:flex;}
+.auth-shell::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(231,189,104,0.32), transparent 36%),
+    radial-gradient(circle at 88% 12%, rgba(217,154,154,0.14), transparent 30%),
+    radial-gradient(circle at 78% 88%, rgba(130,155,120,0.12), transparent 28%),
+    radial-gradient(circle at 20% 90%, rgba(200,139,58,0.14), transparent 32%),
+    linear-gradient(155deg, #FFFBF3 0%, #FBF3E4 48%, #F8EEDF 100%);
+}
+html[data-theme="dark"] .auth-shell::before{
+  background:
+    radial-gradient(circle at 12% 18%, rgba(231,189,104,0.14), transparent 36%),
+    radial-gradient(circle at 88% 12%, rgba(217,154,154,0.07), transparent 30%),
+    radial-gradient(circle at 78% 88%, rgba(130,155,120,0.06), transparent 28%),
+    radial-gradient(circle at 20% 90%, rgba(200,139,58,0.10), transparent 32%),
+    linear-gradient(155deg, #1A1410 0%, #1D170F 48%, #1D1710 100%);
+}
+.auth-shell::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.45;
+  background-image:
+    radial-gradient(rgba(201,145,50,0.12) 1px, transparent 1px),
+    radial-gradient(rgba(201,145,50,0.07) 1px, transparent 1px);
+  background-size:110px 110px, 68px 68px;
+  background-position:0 0, 36px 52px;
+}
+html[data-theme="dark"] .auth-shell::after{opacity:0.22;}
+.auth-layout{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:1.05fr 0.95fr;
+  width:100%;min-height:100dvh;min-height:100vh;
+  max-width:1200px;margin:0 auto;
+  align-items:center;gap:32px;
+  padding:32px 28px;box-sizing:border-box;
+}
+.auth-brand{padding:28px 20px 28px 12px;display:flex;flex-direction:column;justify-content:center;gap:18px;min-width:0;}
+.auth-brand-logo{display:flex;align-items:center;gap:12px;}
+.auth-brand-logo svg{width:48px;height:48px;filter:drop-shadow(0 4px 12px rgba(201,145,50,0.35));}
+.auth-brand-logo .name{font-family:'Playfair Display',serif;font-size:24px;font-weight:600;color:var(--brown);}
+.auth-brand h1{font-family:'Playfair Display',serif;font-size:clamp(28px,3.6vw,42px);font-weight:600;color:var(--brown);line-height:1.18;margin:0;max-width:420px;}
+.auth-brand p{margin:0;font-size:14.5px;color:var(--muted);line-height:1.6;max-width:380px;}
+.auth-brand-ornament{width:120px;height:8px;opacity:0.55;color:var(--gold);margin-top:4px;}
+.auth-card-wrap{display:flex;justify-content:center;align-items:center;min-width:0;}
+.auth-card{
+  width:100%;max-width:420px;
+  background:var(--glass-strong);
+  backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+  border:1px solid var(--glass-border);
+  border-radius:22px;box-shadow:var(--shadow);
+  padding:28px 26px 24px;box-sizing:border-box;
+}
+.auth-card-logo{display:flex;justify-content:center;margin-bottom:14px;}
+.auth-card-logo svg{width:44px;height:44px;}
+.auth-card h2{font-family:'Playfair Display',serif;font-size:24px;font-weight:600;color:var(--brown);margin:0 0 6px;text-align:center;}
+.auth-card .auth-sub{text-align:center;font-size:13px;color:var(--muted);margin:0 0 22px;line-height:1.5;}
+.auth-field{margin-bottom:14px;}
+.auth-field label{display:block;font-size:11.5px;font-weight:700;color:var(--muted);margin-bottom:7px;}
+.auth-field input{
+  width:100%;padding:13px 14px;border-radius:12px;
+  border:1px solid var(--champagne);background:var(--cream);
+  font-size:14px;color:var(--text);outline:none;
+  box-sizing:border-box;min-height:48px;
+  transition:border-color var(--ease), box-shadow var(--ease);
+}
+.auth-field input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,145,50,0.18);}
+.auth-field .error{display:none;font-size:11.5px;color:#C97A6A;margin-top:6px;font-weight:600;}
+.auth-field.has-error input{border-color:#C97A6A;}
+.auth-field.has-error .error{display:block;}
+.auth-pw-wrap{position:relative;}
+.auth-pw-wrap input{padding-right:46px;}
+.auth-pw-toggle{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:36px;height:36px;border:none;background:transparent;color:var(--muted);display:flex;align-items:center;justify-content:center;border-radius:8px;cursor:pointer;}
+.auth-pw-toggle:hover{color:var(--brown);}
+.auth-pw-toggle svg{width:18px;height:18px;}
+.auth-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:4px 0 16px;flex-wrap:wrap;}
+.auth-check{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);cursor:pointer;}
+.auth-check input{width:16px;height:16px;accent-color:var(--gold);}
+.auth-link{font-size:12.5px;font-weight:700;color:var(--gold);background:none;border:none;cursor:pointer;padding:0;}
+.auth-link:hover{text-decoration:underline;}
+.auth-btn{
+  width:100%;min-height:50px;border:none;border-radius:13px;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold));
+  color:#fff;font-weight:700;font-size:14px;
+  box-shadow:0 8px 22px rgba(201,145,50,0.30);
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  cursor:pointer;transition:transform var(--ease), box-shadow var(--ease);
+}
+.auth-btn:hover{transform:translateY(-1px);box-shadow:0 10px 26px rgba(201,145,50,0.4);}
+.auth-btn:disabled{opacity:0.72;cursor:not-allowed;transform:none;}
+.auth-btn .spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,0.35);border-top-color:#fff;border-radius:50%;animation:authSpin 0.7s linear infinite;display:none;}
+.auth-btn.loading .spinner{display:block;}
+@keyframes authSpin{to{transform:rotate(360deg);}}
+.auth-divider{display:flex;align-items:center;gap:12px;margin:18px 0 14px;font-size:11px;color:var(--muted);font-weight:600;}
+.auth-divider::before,.auth-divider::after{content:"";flex:1;height:1px;background:var(--champagne);}
+.auth-google{width:100%;min-height:46px;border-radius:12px;border:1px solid var(--glass-border);background:var(--glass);color:var(--brown);font-weight:700;font-size:13px;display:inline-flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;}
+.auth-google svg{width:16px;height:16px;}
+.auth-footer{text-align:center;margin-top:18px;font-size:13px;color:var(--muted);}
+.auth-footer button{font-weight:700;color:var(--gold);background:none;border:none;cursor:pointer;padding:0;font-size:13px;}
+.auth-hints{margin:0 0 12px;padding:0;list-style:none;font-size:11.5px;color:var(--muted);}
+.auth-hints li{display:flex;align-items:center;gap:6px;margin-bottom:4px;}
+.auth-hints li.ok{color:var(--sage);}
+.auth-strength{height:4px;border-radius:4px;background:var(--champagne);margin:8px 0 4px;overflow:hidden;}
+.auth-strength span{display:block;height:100%;width:0;border-radius:4px;transition:width 0.25s ease, background 0.25s ease;}
+.auth-strength.weak span{width:33%;background:#C97A6A;}
+.auth-strength.fair span{width:66%;background:var(--amber);}
+.auth-strength.strong span{width:100%;background:var(--sage);}
+.auth-strength-label{font-size:11px;color:var(--muted);margin-bottom:10px;}
+.auth-success{text-align:center;padding:12px 4px 8px;}
+.auth-success-ico{width:56px;height:56px;border-radius:50%;margin:0 auto 14px;background:var(--sage-bg);color:var(--sage);display:flex;align-items:center;justify-content:center;}
+.auth-success-ico svg{width:26px;height:26px;}
+.auth-theme-btn{position:fixed;top:14px;right:14px;z-index:5;width:42px;height:42px;border-radius:12px;border:1px solid var(--glass-border);background:var(--glass);color:var(--brown);display:flex;align-items:center;justify-content:center;cursor:pointer;}
+.auth-theme-btn svg{width:18px;height:18px;}
+.auth-panel{display:none;}
+.auth-panel.active{display:block;}
+@media (max-width:900px){
+  .auth-layout{grid-template-columns:1fr;padding:20px 16px 32px;align-items:flex-start;gap:8px;}
+  .auth-brand{padding:12px 4px 8px;text-align:center;align-items:center;}
+  .auth-brand h1{font-size:22px;max-width:100%;}
+  .auth-brand p{font-size:13px;display:none;}
+  .auth-brand-ornament{display:none;}
+  .auth-card{padding:22px 18px 20px;max-width:100%;}
+  .auth-card h2{font-size:22px;}
+}
+@media (max-width:380px){
+  .auth-card{padding:18px 14px 16px;}
+  .auth-field input{min-height:46px;padding:11px 12px;}
+  .auth-btn{min-height:48px;}
+}
+.app.auth-hidden{display:none !important;}
+
 </style>
 </head>
 <body>
 
-<div class="app">
+
+<!-- ============ AUTH SHELL ============ -->
+<div class="auth-shell open" id="authShell">
+  <button type="button" class="auth-theme-btn" id="authThemeToggle" aria-label="Toggle theme">
+    <svg id="authThemeSun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2M19 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
+    <svg id="authThemeMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+  </button>
+  <div class="auth-layout">
+    <div class="auth-brand">
+      <div class="auth-brand-logo">
+        <svg viewBox="0 0 48 48" fill="none"><defs><radialGradient id="authGlow" cx="50%" cy="35%" r="60%"><stop offset="0%" stop-color="#F3D28C"/><stop offset="100%" stop-color="#C99132" stop-opacity="0"/></radialGradient><linearGradient id="authBook" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#E7BD68"/><stop offset="100%" stop-color="#C99132"/></linearGradient></defs><circle cx="24" cy="18" r="20" fill="url(#authGlow)"/><path d="M24 15 C20 12 13 11 8 12.5 V32 C13 30.5 20 31.5 24 34 C28 31.5 35 30.5 40 32 V12.5 C35 11 28 12 24 15Z" fill="url(#authBook)" opacity="0.92"/><path d="M24 15 V34" stroke="#fff" stroke-width="1" opacity="0.5"/><path d="M24 12 L25 8 L26 12" stroke="#fff" stroke-width="1.4" stroke-linecap="round" opacity="0.85"/></svg>
+        <span class="name">I Moi Book</span>
+      </div>
+      <h1>Every celebration,<br>beautifully kept.</h1>
+      <p>Organize events, guests, gifts and memories in one peaceful place — warm, thoughtful, and made for the moments that matter.</p>
+      <svg class="auth-brand-ornament" viewBox="0 0 180 10" fill="none" stroke="currentColor" stroke-width="1"><path d="M0 5h70M110 5h70"/><circle cx="90" cy="5" r="3"/><path d="M84 5l3-3 3 3-3 3Z"/></svg>
+    </div>
+    <div class="auth-card-wrap">
+      <div class="auth-card auth-panel active" id="authLogin">
+        <div class="auth-card-logo"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="18" r="20" fill="url(#authGlow)"/><path d="M24 15 C20 12 13 11 8 12.5 V32 C13 30.5 20 31.5 24 34 C28 31.5 35 30.5 40 32 V12.5 C35 11 28 12 24 15Z" fill="url(#authBook)" opacity="0.92"/><path d="M24 15 V34" stroke="#fff" stroke-width="1" opacity="0.5"/></svg></div>
+        <h2>Welcome back</h2>
+        <p class="auth-sub">Continue organizing the moments that matter.</p>
+        <form id="loginForm" novalidate>
+          <div class="auth-field" id="loginEmailField"><label for="loginEmail">Email address</label><input type="email" id="loginEmail" autocomplete="email" placeholder="Enter your email" required><div class="error">Please enter a valid email.</div></div>
+          <div class="auth-field" id="loginPasswordField"><label for="loginPassword">Password</label><div class="auth-pw-wrap"><input type="password" id="loginPassword" autocomplete="current-password" placeholder="Enter your password" required><button type="button" class="auth-pw-toggle" data-toggle-pw="loginPassword" aria-label="Show password"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></button></div><div class="error">Password is required.</div></div>
+          <div class="auth-row"><label class="auth-check"><input type="checkbox" id="rememberMe"> Remember me</label><button type="button" class="auth-link" data-auth="forgot">Forgot password?</button></div>
+          <button type="submit" class="auth-btn" id="loginBtn"><span class="spinner"></span><span class="btn-label">Sign In</span></button>
+        </form>
+        <div class="auth-divider">or</div>
+        <button type="button" class="auth-google" id="googleLoginBtn"><svg viewBox="0 0 24 24"><path fill="#EA4335" d="M12 10.2v3.6h5.1c-.2 1.2-.9 2.3-1.9 3l3.1 2.4c1.8-1.7 2.9-4.1 2.9-7 0-.7-.1-1.3-.2-1.9H12z"/><path fill="#34A853" d="M5.3 14.3l-.8.6-2.5 1.9C3.6 20 7.5 22.5 12 22.5c2.7 0 5-.9 6.7-2.4l-3.1-2.4c-.9.6-2 .9-3.6.9-2.8 0-5.1-1.9-6-4.4z"/><path fill="#4A90E2" d="M5.3 9.7C4.9 10.7 4.7 11.8 4.7 13s.2 2.3.6 3.3c0 .1 3.2-2.5 3.2-2.5-.2-.5-.3-1.1-.3-1.7s.1-1.2.3-1.7L5.3 9.7z"/><path fill="#FBBC05" d="M12 5.5c1.5 0 2.8.5 3.8 1.5l2.8-2.8C16.9 2.5 14.7 1.5 12 1.5 7.5 1.5 3.6 4 1.9 8.2l3.4 2.6C6.9 7.4 9.2 5.5 12 5.5z"/></svg> Continue with Google</button>
+        <div class="auth-footer">Don't have an account? <button type="button" data-auth="register">Create your account</button></div>
+      </div>
+      <div class="auth-card auth-panel" id="authRegister">
+        <h2>Create your I Moi Book</h2>
+        <p class="auth-sub">Start beautifully organizing your celebrations.</p>
+        <form id="registerForm" novalidate>
+          <div class="auth-field" id="regNameField"><label for="regName">Full Name</label><input type="text" id="regName" autocomplete="name" placeholder="Enter your full name" required><div class="error">Name is required.</div></div>
+          <div class="auth-field" id="regEmailField"><label for="regEmail">Email Address</label><input type="email" id="regEmail" autocomplete="email" placeholder="Enter your email" required><div class="error">Please enter a valid email.</div></div>
+          <div class="auth-field" id="regPhoneField"><label for="regPhone">Phone Number</label><input type="tel" id="regPhone" autocomplete="tel" placeholder="Enter your phone number" required><div class="error">Phone is required.</div></div>
+          <div class="auth-field" id="regPasswordField"><label for="regPassword">Password</label><div class="auth-pw-wrap"><input type="password" id="regPassword" autocomplete="new-password" placeholder="Create a password" required><button type="button" class="auth-pw-toggle" data-toggle-pw="regPassword" aria-label="Show password"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></button></div><div class="error">Password does not meet requirements.</div></div>
+          <ul class="auth-hints" id="regHints"><li data-rule="len">At least 8 characters</li><li data-rule="upper">One uppercase letter</li><li data-rule="num">One number</li></ul>
+          <div class="auth-field" id="regConfirmField"><label for="regConfirm">Confirm Password</label><div class="auth-pw-wrap"><input type="password" id="regConfirm" autocomplete="new-password" placeholder="Confirm your password" required><button type="button" class="auth-pw-toggle" data-toggle-pw="regConfirm" aria-label="Show password"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></button></div><div class="error">Passwords must match.</div></div>
+          <div class="auth-field" id="regTermsField" style="margin-bottom:16px;"><label class="auth-check"><input type="checkbox" id="regTerms" required> I agree to the Terms &amp; Privacy Policy</label><div class="error">Please accept the terms.</div></div>
+          <button type="submit" class="auth-btn" id="registerBtn"><span class="spinner"></span><span class="btn-label">Create Account</span></button>
+        </form>
+        <div class="auth-footer">Already have an account? <button type="button" data-auth="login">Sign In</button></div>
+      </div>
+      <div class="auth-card auth-panel" id="authForgot">
+        <div id="forgotFormState">
+          <h2>Forgot your password?</h2>
+          <p class="auth-sub">Don't worry. We'll help you get back to your celebrations.</p>
+          <form id="forgotForm" novalidate>
+            <div class="auth-field" id="forgotEmailField"><label for="forgotEmail">Email Address</label><input type="email" id="forgotEmail" autocomplete="email" placeholder="Enter your email" required><div class="error">Please enter a valid email.</div></div>
+            <button type="submit" class="auth-btn" id="forgotBtn"><span class="spinner"></span><span class="btn-label">Send Reset Link</span></button>
+          </form>
+          <div class="auth-footer"><button type="button" data-auth="login">← Back to Sign In</button></div>
+        </div>
+        <div id="forgotSuccessState" class="auth-success" style="display:none;">
+          <div class="auth-success-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <h2>Check your inbox</h2>
+          <p class="auth-sub">We've sent password reset instructions to your email address.</p>
+          <button type="button" class="auth-btn" data-auth="login"><span class="btn-label">Back to Sign In</span></button>
+        </div>
+      </div>
+      <div class="auth-card auth-panel" id="authReset">
+        <div id="resetFormState">
+          <h2>Create a new password</h2>
+          <p class="auth-sub">Choose a new password to keep your I Moi Book account secure.</p>
+          <form id="resetForm" novalidate>
+            <div class="auth-field" id="resetPasswordField"><label for="resetPassword">New Password</label><div class="auth-pw-wrap"><input type="password" id="resetPassword" autocomplete="new-password" placeholder="Enter new password" required><button type="button" class="auth-pw-toggle" data-toggle-pw="resetPassword" aria-label="Show password"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></button></div><div class="auth-strength" id="resetStrength"><span></span></div><div class="auth-strength-label" id="resetStrengthLabel">Password strength</div><div class="error">Password does not meet requirements.</div></div>
+            <ul class="auth-hints" id="resetHints"><li data-rule="len">At least 8 characters</li><li data-rule="upper">One uppercase letter</li><li data-rule="num">One number</li></ul>
+            <div class="auth-field" id="resetConfirmField"><label for="resetConfirm">Confirm Password</label><div class="auth-pw-wrap"><input type="password" id="resetConfirm" autocomplete="new-password" placeholder="Confirm new password" required><button type="button" class="auth-pw-toggle" data-toggle-pw="resetConfirm" aria-label="Show password"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></button></div><div class="error">Passwords must match.</div></div>
+            <button type="submit" class="auth-btn" id="resetBtn"><span class="spinner"></span><span class="btn-label">Reset Password</span></button>
+          </form>
+        </div>
+        <div id="resetSuccessState" class="auth-success" style="display:none;">
+          <div class="auth-success-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <h2>Password updated</h2>
+          <p class="auth-sub">Your password has been successfully changed.</p>
+          <button type="button" class="auth-btn" data-auth="login"><span class="btn-label">Continue to Sign In</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="app auth-hidden" id="appShell">
 
   <div class="sidebar-scrim" id="sidebarScrim"></div>
   <div class="dropdown-scrim" id="dropdownScrim"></div>
@@ -868,6 +1733,10 @@ tbody tr:hover{background:rgba(238,217,183,0.22);}
       <div class="nav-item" data-view="events">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
         <span data-i18n="navEvents">Events</span>
+      </div>
+      <div class="nav-item" data-view="moi">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8"/><path d="M12 2v10"/><path d="m8 8 4-4 4 4"/><path d="M2 12h20"/></svg>
+        <span data-i18n="navMoi">Moi</span>
       </div>
       <div class="nav-item" data-view="guests">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17.5" cy="8.5" r="2.6"/><path d="M15.5 14.2c2.9.3 5 2.4 5 5.8"/></svg>
@@ -1081,6 +1950,88 @@ tbody tr:hover{background:rgba(238,217,183,0.22);}
 
     </section>
 
+    <!-- ============ MOI ============ -->
+    <section class="view" id="view-moi">
+      <div class="topbar">
+        <button class="mobile-toggle" id="mobileToggleMoi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+        <div class="page-title" data-i18n="moiTitle">Moi</div>
+        <div class="top-actions">
+          <button class="btn" id="moiCreateBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> <span data-i18n="createMoi">Create Moi</span></button>
+        </div>
+      </div>
+
+      <div class="stat-row stat-row-4col" id="moiStatRow">
+        <div class="stat-card glass"><div class="stat-top"><div class="stat-icon" style="background:var(--amber-bg);color:var(--amber)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div></div><div class="stat-value">₹2,45,000</div><div class="stat-label" data-i18n="moiTotalReceived">Total Received</div></div>
+        <div class="stat-card glass"><div class="stat-top"><div class="stat-icon" style="background:var(--sage-bg);color:var(--sage)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/></svg></div></div><div class="stat-value">₹1,85,000</div><div class="stat-label" data-i18n="moiMoneyReceived">Money Received</div></div>
+        <div class="stat-card glass"><div class="stat-top"><div class="stat-icon" style="background:var(--rose-bg);color:var(--rose)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 12v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8"/><path d="M12 2v10"/><path d="m8 8 4-4 4 4"/></svg></div></div><div class="stat-value">₹60,000</div><div class="stat-label" data-i18n="moiGiftValue">Gift Value</div></div>
+        <div class="stat-card glass"><div class="stat-top"><div class="stat-icon" style="background:var(--amber-bg);color:var(--amber)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div></div><div class="stat-value">124</div><div class="stat-label" data-i18n="moiTotalContributions">Total Contributions</div></div>
+      </div>
+
+      <div class="glass" id="moiListPanel">
+        <div class="filter-search">
+          <div class="search-box" style="background:var(--cream);border-radius:11px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><input placeholder="Search guest or gift..." id="moiSearch" data-i18n-placeholder="searchMoi"></div>
+        </div>
+        <div class="tabs-row" id="moiFilterTabs">
+          <div class="tab-item active" data-moi-filter="all" data-i18n="filterAll">All</div>
+          <div class="tab-item" data-moi-filter="money" data-i18n="moiFilterMoney">Money</div>
+          <div class="tab-item" data-moi-filter="gifts" data-i18n="moiFilterGifts">Gifts</div>
+          <div class="tab-item" data-moi-filter="gold" data-i18n="moiFilterGold">Gold/Silver</div>
+          <div class="tab-item" data-moi-filter="vouchers" data-i18n="moiFilterVouchers">Vouchers</div>
+        </div>
+        <div class="moi-list" id="moiList">
+          <div class="moi-card" data-type="money" data-method="cash">
+            <div class="moi-card-top">
+              <div class="moi-avatar">R</div>
+              <div class="moi-who"><div class="moi-name">Rajesh Kumar</div><div class="moi-event">Arjun &amp; Priya Wedding</div></div>
+            </div>
+            <div class="moi-detail"><span class="moi-kind">💰 Cash</span><span class="moi-amount">₹10,000</span></div>
+            <div class="moi-card-foot"><span class="moi-date">18 Aug 2026</span><span class="badge confirmed" data-i18n="moiReceived">Received</span><div class="row-actions"><button title="View"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></button><button title="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></button></div></div>
+          </div>
+          <div class="moi-card" data-type="gift" data-method="gold">
+            <div class="moi-card-top">
+              <div class="moi-avatar">P</div>
+              <div class="moi-who"><div class="moi-name">Priya &amp; Family</div><div class="moi-event">Arjun &amp; Priya Wedding</div></div>
+            </div>
+            <div class="moi-detail"><span class="moi-kind">💍 Gold</span><span class="moi-amount">Gold chain · 12.5g</span></div>
+            <div class="moi-card-foot"><span class="moi-date">18 Aug 2026</span><span class="badge confirmed" data-i18n="moiReceived">Received</span><div class="row-actions"><button title="View"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></button><button title="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></button></div></div>
+          </div>
+          <div class="moi-card" data-type="money" data-method="upi">
+            <div class="moi-card-top">
+              <div class="moi-avatar">S</div>
+              <div class="moi-who"><div class="moi-name">Suresh Babu</div><div class="moi-event">Arjun &amp; Priya Wedding</div></div>
+            </div>
+            <div class="moi-detail"><span class="moi-kind">📱 UPI</span><span class="moi-amount">₹5,000</span></div>
+            <div class="moi-card-foot"><span class="moi-date">17 Aug 2026</span><span class="badge confirmed" data-i18n="moiReceived">Received</span><div class="row-actions"><button title="View"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></button><button title="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></button></div></div>
+          </div>
+          <div class="moi-card" data-type="gift" data-method="voucher">
+            <div class="moi-card-top">
+              <div class="moi-avatar">M</div>
+              <div class="moi-who"><div class="moi-name">Meena Krishnan</div><div class="moi-event">25th Anniversary</div></div>
+            </div>
+            <div class="moi-detail"><span class="moi-kind">🎟 Voucher</span><span class="moi-amount">₹2,000 · Lifestyle store</span></div>
+            <div class="moi-card-foot"><span class="moi-date">16 Aug 2026</span><span class="badge confirmed" data-i18n="moiReceived">Received</span><div class="row-actions"><button title="View"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></button><button title="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></button></div></div>
+          </div>
+          <div class="moi-card" data-type="gift" data-method="silver">
+            <div class="moi-card-top">
+              <div class="moi-avatar">K</div>
+              <div class="moi-who"><div class="moi-name">Karthik Iyer</div><div class="moi-event">Arjun &amp; Priya Wedding</div></div>
+            </div>
+            <div class="moi-detail"><span class="moi-kind">🥈 Silver</span><span class="moi-amount">Silver set · 250g</span></div>
+            <div class="moi-card-foot"><span class="moi-date">15 Aug 2026</span><span class="badge confirmed" data-i18n="moiReceived">Received</span><div class="row-actions"><button title="View"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></button><button title="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></button></div></div>
+          </div>
+          <div class="moi-card" data-type="money" data-method="bank">
+            <div class="moi-card-top">
+              <div class="moi-avatar">A</div>
+              <div class="moi-who"><div class="moi-name">Ananya Sharma</div><div class="moi-event">Ananya's Birthday</div></div>
+            </div>
+            <div class="moi-detail"><span class="moi-kind">🏦 Bank Transfer</span><span class="moi-amount">₹25,000</span></div>
+            <div class="moi-card-foot"><span class="moi-date">14 Aug 2026</span><span class="badge confirmed" data-i18n="moiReceived">Received</span><div class="row-actions"><button title="View"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></button><button title="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></button></div></div>
+          </div>
+        </div>
+        <div class="pager"><span id="moiCount">Showing 6 of 124 contributions</span><div class="nums"><span>&lt;</span><span class="active">1</span><span>2</span><span>3</span><span>...</span><span>21</span><span>&gt;</span></div></div>
+      </div>
+    </section>
+
     <!-- ============ GUESTS ============ -->
     <section class="view" id="view-guests">
       <div class="topbar">
@@ -1113,6 +2064,108 @@ tbody tr:hover{background:rgba(238,217,183,0.22);}
           </tbody>
         </table>
         <div class="pager"><span id="guestsCount">Showing 5 of 428 guests</span><div class="nums"><span>&lt;</span><span class="active">1</span><span>2</span><span>3</span><span>...</span><span>86</span><span>&gt;</span></div></div>
+      </div>
+    </section>
+
+    <!-- ============ GUEST PROFILE ============ -->
+    <section class="view" id="view-guest-profile">
+      <div class="topbar">
+        <button class="mobile-toggle" id="mobileToggleGuestProfile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+        <button class="btn outline small" id="guestProfileBack" style="gap:6px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M15 6l-6 6 6 6"/></svg>
+          <span data-i18n="backToGuests">Back</span>
+        </button>
+        <div class="page-title" style="flex:1;" data-i18n="guestProfileTitle">Guest Profile</div>
+        <div class="top-actions">
+          <button class="btn outline small" id="guestProfileEdit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg> <span data-i18n="editGuest">Edit</span></button>
+          <button class="btn small" id="guestProfileAddMoi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> <span data-i18n="createMoi">Add Moi</span></button>
+        </div>
+      </div>
+
+      <!-- Profile header card -->
+      <div class="glass gp-header" id="gpHeader">
+        <div class="gp-header-main">
+          <div class="gp-avatar" id="gpAvatar">R</div>
+          <div class="gp-header-info">
+            <h2 class="gp-name" id="gpName">Ramesh Kumar</h2>
+            <div class="gp-meta">
+              <span class="gp-relation" id="gpRelation">Family</span>
+              <span class="gp-dot">·</span>
+              <span class="badge attending" id="gpAttendance" data-i18n="attendingLabel">Attending</span>
+            </div>
+            <div class="gp-contact" id="gpContactLine">+91 98765 43210 · ramesh@gmail.com</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gp-grid">
+        <!-- Details -->
+        <div class="glass">
+          <div class="section-head"><h3 data-i18n="gpDetails">Details</h3></div>
+          <div class="gp-details">
+            <div class="gp-row"><span data-i18n="phoneField">Phone</span><b id="gpPhone">+91 98765 43210</b></div>
+            <div class="gp-row"><span data-i18n="emailField">Email</span><b id="gpEmail">ramesh@gmail.com</b></div>
+            <div class="gp-row"><span data-i18n="gpAddress">Address</span><b id="gpAddress">12, Lake View Road, T. Nagar</b></div>
+            <div class="gp-row"><span data-i18n="gpCity">City / District</span><b id="gpCity">Chennai, Tamil Nadu</b></div>
+            <div class="gp-row"><span data-i18n="gpRelationLabel">Relation</span><b id="gpRelation2">Uncle (Bride side)</b></div>
+            <div class="gp-row"><span data-i18n="gpCategory">Category</span><b id="gpCategory">Family</b></div>
+            <div class="gp-row"><span data-i18n="gpPeopleCount">People attending</span><b id="gpPeople">3</b></div>
+            <div class="gp-row"><span data-i18n="gpInviteStatus">Invitation</span><b id="gpInvite">Sent · Confirmed</b></div>
+            <div class="gp-row"><span data-i18n="gpNotes">Notes</span><b id="gpNotes">Prefers vegetarian meals. Bringing children.</b></div>
+          </div>
+        </div>
+
+        <!-- Moi & Gifts -->
+        <div class="glass">
+          <div class="section-head">
+            <h3 data-i18n="gpMoiGifts">Moi &amp; Gifts</h3>
+            <span class="link-sm" id="gpViewMoiHistory" style="cursor:pointer;"><span data-i18n="gpViewHistory">View History</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+          <div class="gp-moi-summary">
+            <div class="gp-moi-total"><span data-i18n="moiTotalReceived">Total Received</span><b id="gpMoiTotal">₹22,500</b></div>
+            <div class="gp-moi-grid">
+              <div class="gp-moi-chip"><span>💰 Cash</span><b>₹10,000</b></div>
+              <div class="gp-moi-chip"><span>📱 UPI</span><b>₹5,000</b></div>
+              <div class="gp-moi-chip"><span>💍 Gold</span><b>8g</b></div>
+              <div class="gp-moi-chip"><span>🥈 Silver</span><b>—</b></div>
+              <div class="gp-moi-chip"><span>🎁 Gifts</span><b>2</b></div>
+              <div class="gp-moi-chip"><span>👕 Clothes</span><b>1 set</b></div>
+              <div class="gp-moi-chip"><span>🎟 Vouchers</span><b>₹2,000</b></div>
+              <div class="gp-moi-chip"><span>✨ Other</span><b>₹500</b></div>
+            </div>
+          </div>
+          <div class="section-head" style="padding-top:8px;"><h3 style="font-size:14px;" data-i18n="gpContributionHistory">Contribution History</h3></div>
+          <div class="gp-history" id="gpHistory">
+            <div class="gp-hist-item"><div class="gp-hist-ico">💰</div><div class="gp-hist-txt"><b>Cash · ₹10,000</b><span>Arjun &amp; Priya Wedding · 18 Aug 2026</span></div></div>
+            <div class="gp-hist-item"><div class="gp-hist-ico">📱</div><div class="gp-hist-txt"><b>UPI · ₹5,000</b><span>Arjun &amp; Priya Wedding · 17 Aug 2026</span></div></div>
+            <div class="gp-hist-item"><div class="gp-hist-ico">💍</div><div class="gp-hist-txt"><b>Gold chain · 8g</b><span>Arjun &amp; Priya Wedding · 16 Aug 2026</span></div></div>
+            <div class="gp-hist-item"><div class="gp-hist-ico">🎟</div><div class="gp-hist-txt"><b>Voucher · ₹2,000</b><span>Arjun &amp; Priya Wedding · 15 Aug 2026</span></div></div>
+            <div class="gp-hist-item"><div class="gp-hist-ico">👕</div><div class="gp-hist-txt"><b>Clothes · 1 set</b><span>Arjun &amp; Priya Wedding · 14 Aug 2026</span></div></div>
+          </div>
+        </div>
+
+        <!-- Events -->
+        <div class="glass gp-events-card">
+          <div class="section-head"><h3 data-i18n="gpEvents">Events</h3></div>
+          <div class="gp-events" id="gpEvents">
+            <div class="gp-event-item">
+              <div class="gp-event-thumb" style="background-image:url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=200&auto=format&fit=crop')"></div>
+              <div class="gp-event-info">
+                <b>Arjun &amp; Priya Wedding</b>
+                <span>18 Aug 2026 · Chennai</span>
+              </div>
+              <span class="badge attending" data-i18n="attendingLabel">Attending</span>
+            </div>
+            <div class="gp-event-item">
+              <div class="gp-event-thumb" style="background-image:url('https://images.unsplash.com/photo-1529636798458-92182e662485?q=80&w=200&auto=format&fit=crop')"></div>
+              <div class="gp-event-info">
+                <b>Family Get Together</b>
+                <span>28 Oct 2026 · Erode</span>
+              </div>
+              <span class="badge pending" data-i18n="pendingLabel">Pending</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1333,6 +2386,45 @@ tbody tr:hover{background:rgba(238,217,183,0.22);}
   </div>
 </div>
 
+<div class="modal-overlay" id="modalCreateMoi">
+  <div class="modal">
+    <div class="modal-head"><h3 data-i18n="createMoiModalTitle">Create Moi</h3><button class="modal-close" data-close-modal><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+    <form id="createMoiForm">
+      <div class="modal-body">
+        <div class="field"><label data-i18n="guestNameField">Guest</label><select required><option value="">Select guest</option><option>Rajesh Kumar</option><option>Priya &amp; Family</option><option>Suresh Babu</option><option>Meena Krishnan</option><option>Karthik Iyer</option><option>Ananya Sharma</option></select></div>
+        <div class="field"><label data-i18n="eventField">Event</label><select required><option>Arjun &amp; Priya Wedding</option><option>Ananya's Birthday</option><option>25th Anniversary</option><option>Annual Meet 2026</option><option>Family Get Together</option></select></div>
+        <div class="field"><label data-i18n="moiContributionType">Contribution Type</label>
+          <select id="moiTypeSelect" required>
+            <option value="money" data-i18n="moiTypeMoney">Money</option>
+            <option value="gift" data-i18n="moiTypeGift">Gift</option>
+          </select>
+        </div>
+        <div id="moiMoneyFields">
+          <div class="field"><label data-i18n="moiAmount">Amount</label><input placeholder="₹ 10,000" required></div>
+          <div class="field"><label data-i18n="moiPaymentMethod">Payment Method</label>
+            <select><option>Cash</option><option>UPI</option><option>Bank Transfer</option><option>Cheque</option><option>Other</option></select>
+          </div>
+          <div class="field"><label data-i18n="moiReference">Reference Number</label><input placeholder="Optional"></div>
+        </div>
+        <div id="moiGiftFields" style="display:none;">
+          <div class="field"><label data-i18n="moiGiftCategory">Gift Category</label>
+            <select><option>Clothes</option><option>Gold</option><option>Silver</option><option>Jewellery</option><option>Household Items</option><option>Electronics</option><option>Vouchers</option><option>Gift Cards</option><option>Other</option></select>
+          </div>
+          <div class="field"><label data-i18n="moiGiftName">Gift Name</label><input placeholder="e.g. Gold Chain"></div>
+          <div class="field-row">
+            <div class="field"><label data-i18n="moiQuantity">Quantity</label><input type="number" placeholder="1" min="0" step="any"></div>
+            <div class="field"><label data-i18n="moiUnit">Unit</label><select><option>pieces</option><option>grams</option><option>items</option><option>kg</option></select></div>
+          </div>
+          <div class="field"><label data-i18n="moiGiftValueField">Value (optional)</label><input placeholder="₹"></div>
+        </div>
+        <div class="field"><label data-i18n="dateField">Date</label><input type="date" required></div>
+        <div class="field"><label data-i18n="moiNotes">Notes</label><input placeholder="Optional notes"></div>
+      </div>
+      <div class="modal-foot"><button type="button" class="btn ghost" data-close-modal data-i18n="cancel">Cancel</button><button type="submit" class="btn" data-i18n="saveMoi">Save Moi</button></div>
+    </form>
+  </div>
+</div>
+
 <div class="toast-stack" id="toastStack"></div>
 
 <script>
@@ -1341,7 +2433,19 @@ tbody tr:hover{background:rgba(238,217,183,0.22);}
    ============================================================ */
 const translations = {
   en: {
-    navDashboard:"Dashboard", navEvents:"Events", navGuests:"Guests", navLedger:"Ledger", navVendors:"Vendors", navSettings:"Settings",
+    navDashboard:"Dashboard", navEvents:"Events", navMoi:"Moi", navGuests:"Guests", navLedger:"Ledger", navVendors:"Vendors", navSettings:"Settings",
+    moiTitle:"Moi", createMoi:"Create Moi", createMoiModalTitle:"Create Moi", saveMoi:"Save Moi",
+    moiTotalReceived:"Total Received", moiMoneyReceived:"Money Received", moiGiftValue:"Gift Value", moiTotalContributions:"Total Contributions",
+    searchMoi:"Search guest or gift...", moiFilterMoney:"Money", moiFilterGifts:"Gifts", moiFilterGold:"Gold/Silver", moiFilterVouchers:"Vouchers",
+    moiReceived:"Received", moiContributionType:"Contribution Type", moiTypeMoney:"Money", moiTypeGift:"Gift",
+    moiAmount:"Amount", moiPaymentMethod:"Payment Method", moiReference:"Reference Number",
+    moiGiftCategory:"Gift Category", moiGiftName:"Gift Name", moiQuantity:"Quantity", moiUnit:"Unit", moiGiftValueField:"Value (optional)", moiNotes:"Notes",
+    toastMoiSaved:"Moi contribution saved.",
+    guestProfileTitle:"Guest Profile", backToGuests:"Back", editGuest:"Edit Guest",
+    gpDetails:"Details", gpAddress:"Address", gpCity:"City / District", gpRelationLabel:"Relation",
+    gpCategory:"Category", gpPeopleCount:"People attending", gpInviteStatus:"Invitation", gpNotes:"Notes",
+    gpMoiGifts:"Moi & Gifts", gpViewHistory:"View History", gpContributionHistory:"Contribution History",
+    gpEvents:"Events",
     themeLabel:"Light",
     onRightPath:"You're on the right path", keepCrossing:"Keep crossing beautiful memories.",
     beautifulMoments:"Beautiful moments, thoughtfully kept.",
@@ -1418,7 +2522,19 @@ const translations = {
     weekdaysShort:["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
   },
   ta: {
-    navDashboard:"டாஷ்போர்டு", navEvents:"நிகழ்வுகள்", navGuests:"விருந்தினர்கள்", navLedger:"கணக்கேடு", navVendors:"விற்பனையாளர்கள்", navSettings:"அமைப்புகள்",
+    navDashboard:"டாஷ்போர்டு", navEvents:"நிகழ்வுகள்", navMoi:"மொய்", navGuests:"விருந்தினர்கள்", navLedger:"கணக்கேடு", navVendors:"விற்பனையாளர்கள்", navSettings:"அமைப்புகள்",
+    moiTitle:"மொய்", createMoi:"மொய் சேர்", createMoiModalTitle:"மொய் சேர்", saveMoi:"மொய் சேமி",
+    moiTotalReceived:"மொத்தம் பெற்றது", moiMoneyReceived:"பணம் பெற்றது", moiGiftValue:"பரிசு மதிப்பு", moiTotalContributions:"மொத்த பங்களிப்புகள்",
+    searchMoi:"விருந்தினர் அல்லது பரிசு தேடு...", moiFilterMoney:"பணம்", moiFilterGifts:"பரிசுகள்", moiFilterGold:"தங்கம்/வெள்ளி", moiFilterVouchers:"வவுச்சர்கள்",
+    moiReceived:"பெறப்பட்டது", moiContributionType:"பங்களிப்பு வகை", moiTypeMoney:"பணம்", moiTypeGift:"பரிசு",
+    moiAmount:"தொகை", moiPaymentMethod:"கட்டண முறை", moiReference:"குறிப்பு எண்",
+    moiGiftCategory:"பரிசு வகை", moiGiftName:"பரிசு பெயர்", moiQuantity:"அளவு", moiUnit:"அலகு", moiGiftValueField:"மதிப்பு (விரும்பினால்)", moiNotes:"குறிப்புகள்",
+    toastMoiSaved:"மொய் பங்களிப்பு சேமிக்கப்பட்டது.",
+    guestProfileTitle:"விருந்தினர் சுயவிவரம்", backToGuests:"பின்", editGuest:"திருத்து",
+    gpDetails:"விவரங்கள்", gpAddress:"முகவரி", gpCity:"நகரம் / மாவட்டம்", gpRelationLabel:"உறவு",
+    gpCategory:"வகை", gpPeopleCount:"வரும் நபர்கள்", gpInviteStatus:"அழைப்பு", gpNotes:"குறிப்புகள்",
+    gpMoiGifts:"மொய் & பரிசுகள்", gpViewHistory:"வரலாறு", gpContributionHistory:"பங்களிப்பு வரலாறு",
+    gpEvents:"நிகழ்வுகள்",
     themeLabel:"வெளிச்சம்",
     onRightPath:"நீங்கள் சரியான பாதையில் உள்ளீர்கள்", keepCrossing:"அழகான நினைவுகளைத் தொடர்ந்து சேர்க்கவும்.",
     beautifulMoments:"அழகான தருணங்கள், அன்புடன் பாதுகாக்கப்பட்டவை.",
@@ -1546,14 +2662,22 @@ function applyThemeLabel(){
 document.getElementById('themeToggle').addEventListener('click', ()=>{
   const isDark = document.documentElement.getAttribute('data-theme')==='dark';
   document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  try{ localStorage.setItem('moi-theme', document.documentElement.getAttribute('data-theme')); }catch(e){}
   applyThemeLabel();
+  const sun = document.getElementById('authThemeSun');
+  const moon = document.getElementById('authThemeMoon');
+  const dark = document.documentElement.getAttribute('data-theme')==='dark';
+  if(sun) sun.style.display = dark ? 'none' : '';
+  if(moon) moon.style.display = dark ? '' : 'none';
 });
 applyThemeLabel();
 
 /* ---------- Navigation ---------- */
 const navItems = document.querySelectorAll('.nav-item');
 function goToView(view){
-  navItems.forEach(i=>i.classList.toggle('active', i.dataset.view===view));
+  // Highlight sidebar only for primary modules
+  const primary = view === 'guest-profile' ? 'guests' : view;
+  navItems.forEach(i=>i.classList.toggle('active', i.dataset.view===primary));
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
   const target = document.getElementById('view-'+view);
   if(target) target.classList.add('active');
@@ -1564,6 +2688,84 @@ navItems.forEach(item=> item.addEventListener('click', ()=> goToView(item.datase
 document.querySelectorAll('[data-view-link]').forEach(el=>{
   el.addEventListener('click', ()=> goToView(el.dataset.viewLink) );
 });
+
+/* ---------- Guest Profile ---------- */
+const guestProfiles = {
+  'ramesh kumar': {
+    avatar:'R', name:'Ramesh Kumar', relation:'Family', relationDetail:'Uncle (Bride side)',
+    attendance:'attending', phone:'+91 98765 43210', email:'ramesh@gmail.com',
+    address:'12, Lake View Road, T. Nagar', city:'Chennai, Tamil Nadu',
+    category:'Family', people:'3', invite:'Sent · Confirmed',
+    notes:'Prefers vegetarian meals. Bringing children.',
+    moiTotal:'₹22,500'
+  },
+  'priya nair': {
+    avatar:'P', name:'Priya Nair', relation:'Friends', relationDetail:'College friend',
+    attendance:'pending', phone:'+91 91234 56789', email:'priya.nair@gmail.com',
+    address:'45, Green Park', city:'Chennai, Tamil Nadu',
+    category:'Friends', people:'2', invite:'Sent · Awaiting reply',
+    notes:'May arrive late.',
+    moiTotal:'₹5,000'
+  },
+  'karthik iyer': {
+    avatar:'K', name:'Karthik Iyer', relation:'Colleagues', relationDetail:'Work colleague',
+    attendance:'attending', phone:'+91 90987 76655', email:'karthik.iyer@gmail.com',
+    address:'88, IT Corridor', city:'Chennai, Tamil Nadu',
+    category:'Colleagues', people:'1', invite:'Sent · Confirmed',
+    notes:'',
+    moiTotal:'₹15,000'
+  },
+  'meena krishnan': {
+    avatar:'M', name:'Meena Krishnan', relation:'Family', relationDetail:'Aunt',
+    attendance:'notattending', phone:'+91 93456 78123', email:'meena.k@gmail.com',
+    address:'7, Temple Street', city:'Erode, Tamil Nadu',
+    category:'Family', people:'0', invite:'Sent · Declined',
+    notes:'Unable to attend due to travel.',
+    moiTotal:'₹2,000'
+  },
+  'suresh babu': {
+    avatar:'S', name:'Suresh Babu', relation:'Relatives', relationDetail:'Cousin',
+    attendance:'pending', phone:'+91 97070 24600', email:'suresh.babu@gmail.com',
+    address:'21, Market Road', city:'Coimbatore, Tamil Nadu',
+    category:'Relatives', people:'4', invite:'Sent · Awaiting reply',
+    notes:'Family of 4.',
+    moiTotal:'₹8,000'
+  }
+};
+function openGuestProfile(nameKey){
+  const g = guestProfiles[nameKey] || guestProfiles['ramesh kumar'];
+  document.getElementById('gpAvatar').textContent = g.avatar;
+  document.getElementById('gpName').textContent = g.name;
+  document.getElementById('gpRelation').textContent = g.relation;
+  document.getElementById('gpContactLine').textContent = g.phone + ' · ' + g.email;
+  document.getElementById('gpPhone').textContent = g.phone;
+  document.getElementById('gpEmail').textContent = g.email;
+  document.getElementById('gpAddress').textContent = g.address;
+  document.getElementById('gpCity').textContent = g.city;
+  document.getElementById('gpRelation2').textContent = g.relationDetail;
+  document.getElementById('gpCategory').textContent = g.category;
+  document.getElementById('gpPeople').textContent = g.people;
+  document.getElementById('gpInvite').textContent = g.invite;
+  document.getElementById('gpNotes').textContent = g.notes || '—';
+  document.getElementById('gpMoiTotal').textContent = g.moiTotal;
+  const badge = document.getElementById('gpAttendance');
+  badge.className = 'badge ' + g.attendance;
+  badge.textContent = g.attendance === 'attending' ? t('attendingLabel') : g.attendance === 'pending' ? t('pendingLabel') : t('notAttendingLabel');
+  goToView('guest-profile');
+}
+document.getElementById('guestsTableBody')?.addEventListener('click', (e)=>{
+  const tr = e.target.closest('tr');
+  if(!tr) return;
+  // don't open profile when tapping the call action button only
+  if(e.target.closest('.row-actions button') && !e.target.closest('.row-actions button[title]')) {
+    // allow row click; call button still triggers profile for now
+  }
+  openGuestProfile(tr.dataset.name || 'ramesh kumar');
+});
+document.getElementById('guestProfileBack')?.addEventListener('click', ()=> goToView('guests'));
+document.getElementById('guestProfileAddMoi')?.addEventListener('click', ()=> openModal('modalCreateMoi'));
+document.getElementById('guestProfileEdit')?.addEventListener('click', ()=> openModal('modalAddGuest'));
+document.getElementById('gpViewMoiHistory')?.addEventListener('click', ()=> goToView('moi'));
 
 /* ---------- Mobile dashboard reorder ---------- */
 (function(){
@@ -1598,7 +2800,7 @@ const scrim = document.getElementById('sidebarScrim');
 function openSidebarMobile(){ sidebar.classList.add('open'); scrim.classList.add('open'); }
 function closeSidebarMobile(){ sidebar.classList.remove('open'); scrim.classList.remove('open'); }
 function toggleSidebarMobile(){ sidebar.classList.contains('open') ? closeSidebarMobile() : openSidebarMobile(); }
-['mobileToggle','mobileToggle2','mobileToggle3','mobileToggle4','mobileToggle5','mobileToggle6'].forEach(id=>{
+['mobileToggle','mobileToggle2','mobileToggleMoi','mobileToggle3','mobileToggleGuestProfile','mobileToggle4','mobileToggle5','mobileToggle6'].forEach(id=>{
   const btn = document.getElementById(id);
   if(btn) btn.addEventListener('click', toggleSidebarMobile);
 });
@@ -1737,12 +2939,26 @@ document.querySelectorAll('.theme-dot').forEach(dot=>{
 });
 
 /* ---------- Modals ---------- */
-function openModal(id){ document.getElementById(id).classList.add('open'); }
-function closeModal(el){ el.closest('.modal-overlay').classList.remove('open'); }
+function openModal(id){
+  document.getElementById(id).classList.add('open');
+  document.body.classList.add('modal-open');
+}
+function closeModal(el){
+  const overlay = el.closest ? el.closest('.modal-overlay') : el;
+  if(overlay) overlay.classList.remove('open');
+  if(!document.querySelector('.modal-overlay.open')){
+    document.body.classList.remove('modal-open');
+  }
+}
+function closeAllModals(){
+  document.querySelectorAll('.modal-overlay.open').forEach(o=>o.classList.remove('open'));
+  document.body.classList.remove('modal-open');
+}
 document.getElementById('heroCreateEvent').addEventListener('click', ()=> openModal('modalCreateEvent'));
 document.getElementById('eventsCreateBtn').addEventListener('click', ()=> openModal('modalCreateEvent'));
 document.getElementById('guestsAddBtn').addEventListener('click', ()=> openModal('modalAddGuest'));
 document.getElementById('vendorsAddBtn').addEventListener('click', ()=> openModal('modalAddVendor'));
+document.getElementById('moiCreateBtn').addEventListener('click', ()=> openModal('modalCreateMoi'));
 document.getElementById('calViewBtn').addEventListener('click', toggleCalendarView);
 
 /* ---------- Calendar View ---------- */
@@ -1822,10 +3038,10 @@ document.querySelectorAll('[data-close-modal]').forEach(el=>{
   el.addEventListener('click', ()=> closeModal(el));
 });
 document.querySelectorAll('.modal-overlay').forEach(overlay=>{
-  overlay.addEventListener('click', (e)=>{ if(e.target===overlay) overlay.classList.remove('open'); });
+  overlay.addEventListener('click', (e)=>{ if(e.target===overlay) closeModal(overlay); });
 });
 document.addEventListener('keydown', (e)=>{
-  if(e.key==='Escape') document.querySelectorAll('.modal-overlay.open').forEach(o=>o.classList.remove('open'));
+  if(e.key==='Escape') closeAllModals();
 });
 
 /* ---------- Toasts ---------- */
@@ -1841,21 +3057,53 @@ function showToast(msg){
 /* ---------- Form submissions ---------- */
 document.getElementById('createEventForm').addEventListener('submit', (e)=>{
   e.preventDefault();
-  document.getElementById('modalCreateEvent').classList.remove('open');
+  closeModal(document.getElementById('modalCreateEvent'));
   e.target.reset();
   showToast(t('toastEventCreated'));
 });
 document.getElementById('addGuestForm').addEventListener('submit', (e)=>{
   e.preventDefault();
-  document.getElementById('modalAddGuest').classList.remove('open');
+  closeModal(document.getElementById('modalAddGuest'));
   e.target.reset();
   showToast(t('toastGuestAdded'));
 });
 document.getElementById('addVendorForm').addEventListener('submit', (e)=>{
   e.preventDefault();
-  document.getElementById('modalAddVendor').classList.remove('open');
+  closeModal(document.getElementById('modalAddVendor'));
   e.target.reset();
   showToast(t('toastVendorAdded'));
+});
+document.getElementById('createMoiForm').addEventListener('submit', (e)=>{
+  e.preventDefault();
+  closeModal(document.getElementById('modalCreateMoi'));
+  e.target.reset();
+  document.getElementById('moiMoneyFields').style.display = '';
+  document.getElementById('moiGiftFields').style.display = 'none';
+  showToast(t('toastMoiSaved'));
+});
+document.getElementById('moiTypeSelect')?.addEventListener('change', (e)=>{
+  const isGift = e.target.value === 'gift';
+  document.getElementById('moiMoneyFields').style.display = isGift ? 'none' : '';
+  document.getElementById('moiGiftFields').style.display = isGift ? '' : 'none';
+  const amountInput = document.querySelector('#moiMoneyFields input');
+  if(amountInput) amountInput.required = !isGift;
+});
+document.getElementById('moiFilterTabs')?.querySelectorAll('.tab-item').forEach(tab=>{
+  tab.addEventListener('click', ()=>{
+    document.querySelectorAll('#moiFilterTabs .tab-item').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    const f = tab.dataset.moiFilter;
+    document.querySelectorAll('#moiList .moi-card').forEach(card=>{
+      const type = card.dataset.type;
+      const method = card.dataset.method;
+      let show = true;
+      if(f==='money') show = type==='money';
+      else if(f==='gifts') show = type==='gift';
+      else if(f==='gold') show = method==='gold' || method==='silver';
+      else if(f==='vouchers') show = method==='voucher';
+      card.style.display = show ? '' : 'none';
+    });
+  });
 });
 document.getElementById('saveProfileBtn').addEventListener('click', ()=> showToast(t('toastProfileSaved')));
 document.getElementById('savePrefsBtn').addEventListener('click', ()=> showToast(t('toastPrefsSaved')));
@@ -1866,6 +3114,220 @@ document.getElementById('dashSearch').addEventListener('keydown', (e)=>{
     goToView('events');
   }
 });
+
+
+document.querySelectorAll('[data-i18n="signOut"]').forEach(el=>{
+  el.closest('.dropdown-item')?.addEventListener('click', ()=>{
+    document.getElementById('authShell')?.classList.add('open');
+    document.getElementById('appShell')?.classList.add('auth-hidden');
+    if(window.__showAuth) window.__showAuth('login');
+    history.replaceState(null,'','#login');
+  });
+});
+
+/* ---------- Authentication ---------- */
+(function(){
+  const authShell = document.getElementById('authShell');
+  const appShell = document.getElementById('appShell') || document.querySelector('.app');
+  const panels = {
+    login: document.getElementById('authLogin'),
+    register: document.getElementById('authRegister'),
+    forgot: document.getElementById('authForgot'),
+    reset: document.getElementById('authReset')
+  };
+  function showAuth(name){
+    Object.values(panels).forEach(p=>p && p.classList.remove('active'));
+    if(panels[name]) panels[name].classList.add('active');
+    // reset success states
+    const fs = document.getElementById('forgotFormState');
+    const fss = document.getElementById('forgotSuccessState');
+    const rs = document.getElementById('resetFormState');
+    const rss = document.getElementById('resetSuccessState');
+    if(fs) fs.style.display='';
+    if(fss) fss.style.display='none';
+    if(rs) rs.style.display='';
+    if(rss) rss.style.display='none';
+    if(location.hash !== '#'+ (name==='login'?'login': name==='register'?'register': name==='forgot'?'forgot-password':'reset-password')){
+      history.replaceState(null,'','#'+ (name==='login'?'login': name==='register'?'register': name==='forgot'?'forgot-password':'reset-password'));
+    }
+  }
+  function enterApp(){
+    if(authShell) authShell.classList.remove('open');
+    if(appShell) appShell.classList.remove('auth-hidden');
+    history.replaceState(null,'','#dashboard');
+  }
+  function showAuthShell(){
+    if(authShell) authShell.classList.add('open');
+    if(appShell) appShell.classList.add('auth-hidden');
+  }
+  window.__showAuth = showAuth;
+  window.__enterApp = enterApp;
+
+  document.querySelectorAll('[data-auth]').forEach(btn=>{
+    btn.addEventListener('click', ()=> showAuth(btn.dataset.auth));
+  });
+
+  // password toggles
+  document.querySelectorAll('[data-toggle-pw]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const id = btn.dataset.togglePw;
+      const input = document.getElementById(id);
+      if(!input) return;
+      input.type = input.type === 'password' ? 'text' : 'password';
+    });
+  });
+
+  // theme on auth
+  function syncAuthThemeIcons(){
+    const dark = document.documentElement.getAttribute('data-theme')==='dark';
+    const sun = document.getElementById('authThemeSun');
+    const moon = document.getElementById('authThemeMoon');
+    if(sun) sun.style.display = dark ? 'none' : '';
+    if(moon) moon.style.display = dark ? '' : 'none';
+  }
+  document.getElementById('authThemeToggle')?.addEventListener('click', ()=>{
+    const cur = document.documentElement.getAttribute('data-theme')||'light';
+    document.documentElement.setAttribute('data-theme', cur==='dark'?'light':'dark');
+    try{ localStorage.setItem('moi-theme', document.documentElement.getAttribute('data-theme')); }catch(e){}
+    syncAuthThemeIcons();
+    if(typeof applyThemeLabel==='function') applyThemeLabel();
+  });
+  try{
+    const saved = localStorage.getItem('moi-theme');
+    if(saved) document.documentElement.setAttribute('data-theme', saved);
+  }catch(e){}
+  syncAuthThemeIcons();
+
+  function validEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+  function pwRules(v){
+    return { len: v.length>=8, upper:/[A-Z]/.test(v), num:/[0-9]/.test(v) };
+  }
+  function setLoading(btn, on, label){
+    if(!btn) return;
+    btn.disabled = !!on;
+    btn.classList.toggle('loading', !!on);
+    const lab = btn.querySelector('.btn-label');
+    if(lab && label) lab.textContent = label;
+  }
+  function clearErrors(form){
+    form.querySelectorAll('.auth-field').forEach(f=>f.classList.remove('has-error'));
+  }
+  function markError(id, on){
+    const el = document.getElementById(id);
+    if(el) el.classList.toggle('has-error', !!on);
+  }
+
+  // Login
+  document.getElementById('loginForm')?.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    clearErrors(e.target);
+    const email = document.getElementById('loginEmail').value.trim();
+    const pw = document.getElementById('loginPassword').value;
+    let ok = true;
+    if(!validEmail(email)){ markError('loginEmailField', true); ok=false; }
+    if(!pw){ markError('loginPasswordField', true); ok=false; }
+    if(!ok) return;
+    const btn = document.getElementById('loginBtn');
+    setLoading(btn, true, 'Signing in...');
+    setTimeout(()=>{ setLoading(btn, false, 'Sign In'); enterApp(); }, 900);
+  });
+  document.getElementById('googleLoginBtn')?.addEventListener('click', ()=>{
+    const btn = document.getElementById('loginBtn');
+    setLoading(btn, true, 'Signing in...');
+    setTimeout(()=>{ setLoading(btn, false, 'Sign In'); enterApp(); }, 700);
+  });
+
+  // Register
+  function updateHints(pw, hintsId){
+    const rules = pwRules(pw);
+    document.querySelectorAll('#'+hintsId+' li').forEach(li=>{
+      li.classList.toggle('ok', !!rules[li.dataset.rule]);
+    });
+    return rules.len && rules.upper && rules.num;
+  }
+  document.getElementById('regPassword')?.addEventListener('input', (e)=> updateHints(e.target.value, 'regHints'));
+  document.getElementById('registerForm')?.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    clearErrors(e.target);
+    const name = document.getElementById('regName').value.trim();
+    const email = document.getElementById('regEmail').value.trim();
+    const phone = document.getElementById('regPhone').value.trim();
+    const pw = document.getElementById('regPassword').value;
+    const conf = document.getElementById('regConfirm').value;
+    const terms = document.getElementById('regTerms').checked;
+    let ok = true;
+    if(!name){ markError('regNameField', true); ok=false; }
+    if(!validEmail(email)){ markError('regEmailField', true); ok=false; }
+    if(!phone){ markError('regPhoneField', true); ok=false; }
+    if(!updateHints(pw,'regHints')){ markError('regPasswordField', true); ok=false; }
+    if(pw !== conf){ markError('regConfirmField', true); ok=false; }
+    if(!terms){ markError('regTermsField', true); ok=false; }
+    if(!ok) return;
+    const btn = document.getElementById('registerBtn');
+    setLoading(btn, true, 'Creating account...');
+    setTimeout(()=>{ setLoading(btn, false, 'Create Account'); enterApp(); }, 1000);
+  });
+
+  // Forgot
+  document.getElementById('forgotForm')?.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    clearErrors(e.target);
+    const email = document.getElementById('forgotEmail').value.trim();
+    if(!validEmail(email)){ markError('forgotEmailField', true); return; }
+    const btn = document.getElementById('forgotBtn');
+    setLoading(btn, true, 'Sending...');
+    setTimeout(()=>{
+      setLoading(btn, false, 'Send Reset Link');
+      document.getElementById('forgotFormState').style.display='none';
+      document.getElementById('forgotSuccessState').style.display='';
+    }, 900);
+  });
+
+  // Reset
+  document.getElementById('resetPassword')?.addEventListener('input', (e)=>{
+    const v = e.target.value;
+    const strong = updateHints(v, 'resetHints');
+    const bar = document.getElementById('resetStrength');
+    const lab = document.getElementById('resetStrengthLabel');
+    const rules = pwRules(v);
+    const score = (rules.len?1:0)+(rules.upper?1:0)+(rules.num?1:0);
+    bar.className = 'auth-strength ' + (score<=1?'weak':score===2?'fair':'strong');
+    lab.textContent = score<=1?'Weak':score===2?'Fair':'Strong';
+  });
+  document.getElementById('resetForm')?.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    clearErrors(e.target);
+    const pw = document.getElementById('resetPassword').value;
+    const conf = document.getElementById('resetConfirm').value;
+    let ok = true;
+    if(!updateHints(pw,'resetHints')){ markError('resetPasswordField', true); ok=false; }
+    if(pw !== conf){ markError('resetConfirmField', true); ok=false; }
+    if(!ok) return;
+    const btn = document.getElementById('resetBtn');
+    setLoading(btn, true, 'Updating...');
+    setTimeout(()=>{
+      setLoading(btn, false, 'Reset Password');
+      document.getElementById('resetFormState').style.display='none';
+      document.getElementById('resetSuccessState').style.display='';
+    }, 900);
+  });
+
+  // hash routing for auth
+  function routeFromHash(){
+    const h = (location.hash||'#login').replace('#','');
+    if(['login','register','forgot-password','reset-password'].includes(h)){
+      showAuthShell();
+      showAuth(h==='forgot-password'?'forgot':h==='reset-password'?'reset':h);
+    } else if(h==='dashboard' || !authShell.classList.contains('open')){
+      // stay
+    }
+  }
+  window.addEventListener('hashchange', routeFromHash);
+  // Start on login
+  showAuth('login');
+  history.replaceState(null,'','#login');
+})();
+
 </script>
 </body>
 </html>
